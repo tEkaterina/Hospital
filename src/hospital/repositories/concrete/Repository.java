@@ -3,6 +3,7 @@ package hospital.repositories.concrete;
 import hospital.repositories.DbSessionFactory;
 import hospital.repositories.interfaces.IRepository;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 import java.util.*;
@@ -64,7 +65,9 @@ public class Repository<T> implements IRepository<T> {
         Session session = DbSessionFactory.get();
         try{
             session.beginTransaction();
-            return (T)session.load(type, id);
+            T entity = session.load(type, id);
+            Hibernate.initialize(entity);
+            return entity;
 
         }catch (Exception e){
             System.out.println(e);

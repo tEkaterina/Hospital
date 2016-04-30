@@ -6,6 +6,13 @@
     <title></title>
 </head>
 <body>
+<span>
+    <%
+    Patient p = (Patient)request.getAttribute("p");
+    if (p != null){%>
+        <%=p.getName() + " " + p.getSurname()%>
+    <%}%>
+</span>
 <ul>
 <%
   ArrayList<Patient> patients = (ArrayList<Patient>)request.getAttribute("patients");
