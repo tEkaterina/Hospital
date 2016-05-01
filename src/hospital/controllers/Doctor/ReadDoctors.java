@@ -21,10 +21,6 @@ public class ReadDoctors extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Repository<InitialInspection> repository = new Repository<InitialInspection>(InitialInspection.class);
-        InitialInspection insp = new InitialInspection();
-        repository.add(insp);
-
         Repository<Doctor> doctorsRepository = new Repository<Doctor>(Doctor.class);
         List<Doctor> doctors = doctorsRepository.getAll();
         request.setAttribute("doctors", doctors);
