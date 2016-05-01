@@ -15,19 +15,20 @@
     <th>House</th>
     <th>Housing</th>
     <th>Apartment</th>
+    <th>Visits</th>
     <th>Delete</th>
     <th>Edit</th>
   </tr>
   <c:forEach items = "${patients}" var="patient">
     <tr>
-      <td>${patient.getName()}</td>
-      <td>${patient.getSurname()}</td>
-      <td>${patient.getClinicNumber()}</td>
+      <td><c:out value="${patient.getName()}"/></td>
+      <td><c:out value="${patient.getSurname()}"/></td>
+      <td><c:out value="${patient.getClinicNumber()}"/></td>
 
-      <td>${patient.getAddress().getStreet()}</td>
-      <td>${patient.getAddress().getHouse()}</td>
-      <td>${patient.getAddress().getHousing()}</td>
-      <td>${patient.getAddress().getApartment()}</td>
+      <td><c:out value="${patient.getAddress().getStreet()}"/></td>
+      <td><c:out value="${patient.getAddress().getHouse()}"/></td>
+      <td><c:out value="${patient.getAddress().getHousing()}"/></td>
+      <td><c:out value="${patient.getAddress().getApartment()}"/></td>
       <td>
         <form action = "/visits" method="get">
           <input type="hidden" name="id" value="${patient.getId()}">
@@ -36,14 +37,14 @@
       </td>
 
       <td>
-        <form action = "/delete" method="get">
+        <form action = "/deletePatient" method="get">
           <input type="hidden" name="id" value="${patient.getId()}">
           <input type="image" src="/Views/Images/remove.png">
         </form>
       </td>
 
       <td>
-        <form action = "/edit" method="get">
+        <form action = "/editPatient" method="get">
           <input type="hidden" name="id" value="${patient.getId()}">
           <input type="image" src="/Views/Images/edit.png">
         </form>
@@ -51,7 +52,7 @@
     </tr>
   </c:forEach>
 
-  <form action = "/add" method="post">
+  <form action = "/addPatient" method="post">
     <tr>
       <td><input  type="text" name="name"></td>
       <td><input  type="text" name="surname"></td>
@@ -64,12 +65,7 @@
         <input type="image" src="/Views/Images/add.png">
       </td>
     </tr>
-
   </form>
-
-
-
-
 </table>
 
 </body>
