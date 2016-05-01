@@ -1,4 +1,4 @@
-package hospital.controllers;
+package hospital.controllers.Patient;
 
 import hospital.models.Address;
 import hospital.models.Patient;
@@ -17,6 +17,7 @@ import java.util.List;
 public class AddPatient extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.setCharacterEncoding("windows-1251");
         Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);
         Patient addedPatient = new Patient();
         addedPatient.setName(request.getParameter("name"));
