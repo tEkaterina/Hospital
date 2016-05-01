@@ -12,11 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by Zenbook on 24.04.2016.
- */
-@WebServlet("/add")
-public class AddPatients extends HttpServlet {
+
+@WebServlet("/addPatient")
+public class AddPatient extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);

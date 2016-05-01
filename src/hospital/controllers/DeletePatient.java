@@ -1,5 +1,4 @@
 package hospital.controllers;
-
 import hospital.models.Patient;
 import hospital.repositories.concrete.Repository;
 
@@ -10,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/delete")
+@WebServlet("/deletePatient")
 public class DeletePatient extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -24,5 +23,4 @@ public class DeletePatient extends HttpServlet {
         patientRepository.delete(deletedPatient);
         response.sendRedirect("/patientsView");
     }
-
 }

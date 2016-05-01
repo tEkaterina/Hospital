@@ -1,5 +1,4 @@
 package hospital.controllers;
-
 import hospital.models.Patient;
 import hospital.repositories.concrete.Repository;
 
@@ -13,7 +12,7 @@ import java.util.List;
 
 
 @WebServlet("/patientsView")
-public class UpdatePatients extends HttpServlet {
+public class ReadPatients extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -21,7 +20,6 @@ public class UpdatePatients extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);
-
         List<Patient> patients = patientRepository.getAll();
         request.setAttribute("patients", patients);
         request.getRequestDispatcher("/Views/patientsView.jsp").forward(request, response);
