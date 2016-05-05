@@ -3,8 +3,10 @@ package hospital.repositories.concrete;
 import hospital.repositories.DbSessionFactory;
 import hospital.repositories.interfaces.IRepository;
 
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.*;
 
@@ -90,5 +92,21 @@ public class Repository<T> implements IRepository<T> {
             session.close();
         }
         return new ArrayList<T>();
+    }
+
+    @Override
+    public T getByField(String name, Object value)
+    {
+        Session session = DbSessionFactory.get();
+        T foundValue = null;
+        try{
+            Criteria criteria = session.createCriteria(type);
+            foundValue = (T)criteria.add(Restrictions.eq(name, value)).uniqueResult();
+        } catch (Exception e){
+            System.out.println(e);
+        } finally {
+            session.close();
+        }
+        return foundValue;
     }
 }

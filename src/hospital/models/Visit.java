@@ -29,15 +29,7 @@ public class Visit {
     @JoinColumn(name = "analysis_id")
     private Analysis analysis;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name="visit_to_medicine",
-            joinColumns = { @JoinColumn(name="visit_id") },
-            inverseJoinColumns = { @JoinColumn(name="medicine_id")})
-    private Set<Medicine> medicines;
-
-    public Visit(){
-        medicines = new HashSet<Medicine>();
-    }
+    public Visit(){ }
 
     public int getId(){
         return id;
@@ -72,13 +64,6 @@ public class Visit {
     }
     public void setPatient(Patient patient){
         this.patient = patient;
-    }
-
-    public Set<Medicine> getMedicines(){
-        return medicines;
-    }
-    public void setMedicines(Set<Medicine> medicines){
-        this.medicines = medicines;
     }
 
     public Analysis getAnalysis() {
