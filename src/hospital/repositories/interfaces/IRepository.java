@@ -9,4 +9,7 @@ public interface IRepository<T> {
 
     T getById(int id);
     List<T> getAll();
+    T getByField(String name, Object value);
+
+    void close();
 }
