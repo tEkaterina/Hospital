@@ -20,5 +20,6 @@
         <mapping class="hospital.models.Patient" />
         <mapping class="hospital.models.Speciality"/>
         <mapping class="hospital.models.Visit"/>
+        <mapping class="hospital.models.User"/>
     </session-factory>
 </hibernate-configuration>

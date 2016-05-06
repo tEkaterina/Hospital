@@ -14,7 +14,7 @@ public class User {
     private String email;
     private String password;
     private String salt;
-    
+
     private RoleName roleName;
 
     public int getId() {
