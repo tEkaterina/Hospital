@@ -12,15 +12,12 @@
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="hospital.models.ActiveIngredient"/>
         <mapping class="hospital.models.Address"/>
         <mapping class="hospital.models.Analysis"/>
         <mapping class="hospital.models.DiseaseType"/>
         <mapping class="hospital.models.Doctor"/>
         <mapping class="hospital.models.InitialInspection"/>
-        <mapping class="hospital.models.Medicine"/>
         <mapping class="hospital.models.Patient" />
-        <mapping class="hospital.models.ReleaseDosageForm"/>
         <mapping class="hospital.models.Speciality"/>
         <mapping class="hospital.models.Visit"/>
     </session-factory>

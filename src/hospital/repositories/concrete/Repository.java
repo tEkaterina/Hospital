@@ -37,7 +37,6 @@ public class Repository<T> implements IRepository<T> {
             session.beginTransaction();
             session.update(entity);
             session.getTransaction().commit();
-
         }catch (Exception e){
             System.out.println(e);
         }

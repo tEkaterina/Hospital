@@ -18,10 +18,11 @@ public class TestServlet extends javax.servlet.http.HttpServlet {
         Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);
 
         Patient p = patientRepository.getById(1);
-
         List<Patient> patients = patientRepository.getAll();
         request.setAttribute("patients", patients);
         request.setAttribute("p", p);
+
+        patientRepository.close();
 
         request.getRequestDispatcher("/Views/patients.jsp").forward(request, response);
     }
