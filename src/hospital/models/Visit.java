@@ -25,11 +25,12 @@ public class Visit {
     @JoinColumn(name="patient_id")
     private Patient patient;
 
-    @ManyToOne
-    @JoinColumn(name = "analysis_id")
-    private Analysis analysis;
+    @OneToMany(mappedBy = "visit")
+    private Set<Analysis> analyzes;
 
-    public Visit(){ }
+    public Visit(){
+        analyzes = new HashSet<Analysis>();
+    }
 
     public int getId(){
         return id;
@@ -66,11 +67,10 @@ public class Visit {
         this.patient = patient;
     }
 
-    public Analysis getAnalysis() {
-        return analysis;
+    public Set<Analysis> getAnalyzes() {
+        return analyzes;
     }
-    public void setAnalysis(Analysis analysis) {
-        this.analysis = analysis;
+    public void setAnalyzes(Set<Analysis> analysis) {
+        this.analyzes = analysis;
     }
-
 }

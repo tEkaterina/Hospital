@@ -15,17 +15,15 @@ public class Analysis {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    private int hbA1c;
-    private int totalCholesterol;
-    private int triglycerides;
+    private float hbA1c;
+    private float totalCholesterol;
+    private float triglycerides;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "visit_id")
-    private Set<Visit> visits;
+    private Visit visit;
 
-    public Analysis(){
-        visits = new HashSet<Visit>();
-    }
+    public Analysis(){ }
 
     public int getId() {
         return id;
@@ -41,32 +39,31 @@ public class Analysis {
         this.date = date;
     }
 
-    public int getHbA1c() {
+    public float getHbA1c() {
         return hbA1c;
     }
-    public void setHbA1c(int hbA1c) {
+    public void setHbA1c(float hbA1c) {
         this.hbA1c = hbA1c;
     }
 
-    public int getTotalCholesterol() {
+    public float getTotalCholesterol() {
         return totalCholesterol;
     }
-    public void setTotalCholesterol(int totalCholesterol) {
+    public void setTotalCholesterol(float totalCholesterol) {
         this.totalCholesterol = totalCholesterol;
     }
 
-    public int getTriglycerides() {
+    public float getTriglycerides() {
         return triglycerides;
     }
-    public void setTriglycerides(int triglycerides) {
+    public void setTriglycerides(float triglycerides) {
         this.triglycerides = triglycerides;
     }
 
-    public Set<Visit> getVisits() {
-        return visits;
+    public Visit getVisit() {
+        return visit;
     }
-    public void setVisits(Set<Visit> visits) {
-        this.visits = visits;
+    public void setVisit(Visit visit) {
+        this.visit = visit;
     }
-
 }

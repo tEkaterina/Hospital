@@ -14,9 +14,7 @@
 
         <mapping class="hospital.models.Address"/>
         <mapping class="hospital.models.Analysis"/>
-        <mapping class="hospital.models.DiseaseType"/>
         <mapping class="hospital.models.Doctor"/>
-        <mapping class="hospital.models.InitialInspection"/>
         <mapping class="hospital.models.Patient" />
         <mapping class="hospital.models.Speciality"/>
         <mapping class="hospital.models.Visit"/>

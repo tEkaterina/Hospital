@@ -19,9 +19,6 @@ public class Patient {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
-    private InitialInspection initialInspection;
-
     @OneToMany(mappedBy = "patient")
     private Set<Visit> visits;
 
@@ -62,13 +59,6 @@ public class Patient {
     }
     public void setAddress(Address address){
         this.address = address;
-    }
-
-    public InitialInspection getInitialInspection(){
-        return initialInspection;
-    }
-    public void setInitialInspection(InitialInspection initialInspection){
-        this.initialInspection = initialInspection;
     }
 
     public Set<Visit> getVisits(){

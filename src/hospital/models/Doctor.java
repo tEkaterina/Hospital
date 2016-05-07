@@ -25,13 +25,9 @@ public class Doctor {
     private String telephone;
 
     @OneToMany(mappedBy = "doctor")
-    private Set<InitialInspection> initialInspections;
-
-    @OneToMany(mappedBy = "doctor")
     private Set<Visit> visits;
 
     public Doctor(){
-        initialInspections = new HashSet<InitialInspection>();
         visits = new HashSet<Visit>();
     }
 
@@ -75,13 +71,6 @@ public class Doctor {
     }
     public void setTelephone(String telephone){
         this.telephone = telephone;
-    }
-
-    public Set<InitialInspection> getInitialInspections(){
-        return initialInspections;
-    }
-    public void setInitialInspections(Set<InitialInspection> initialInspections){
-        this.initialInspections = initialInspections;
     }
 
     public Set<Visit> getVisits(){
