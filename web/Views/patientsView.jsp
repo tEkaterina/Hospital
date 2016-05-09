@@ -5,7 +5,7 @@
   <title>Список пациентов</title>
 </head>
 <body>
-
+<c:out value="${user.getRoleName()}"/>
 <table border ="1">
   <tr>
     <th>Имя</th>
@@ -30,9 +30,9 @@
       <td><c:out value="${patient.getAddress().getHousing()}"/></td>
       <td><c:out value="${patient.getAddress().getApartment()}"/></td>
       <td>
-        <form action = "/visits" method="get">
+        <form action = "/patientVisits" method="get">
           <input type="hidden" name="id" value="${patient.getId()}">
-          <input type="submit" value="Visits">
+          <input type="submit" value="Открыть список визитов">
         </form>
       </td>
 
