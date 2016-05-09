@@ -1,9 +1,8 @@
 package hospital.controllers.Doctor;
 
-import hospital.models.DiseaseType;
 import hospital.models.Doctor;
-import hospital.models.InitialInspection;
 import hospital.repositories.concrete.Repository;
+import hospital.services.DoctorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,9 +20,7 @@ public class ReadDoctors extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Repository<Doctor> doctorsRepository = new Repository<Doctor>(Doctor.class);
-        List<Doctor> doctors = doctorsRepository.getAll();
-        request.setAttribute("doctors", doctors);
+        request.setAttribute("doctors", DoctorService.getAll());
         request.getRequestDispatcher("/Views/doctorsView.jsp").forward(request, response);
     }
 }

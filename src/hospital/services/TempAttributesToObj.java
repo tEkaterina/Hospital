@@ -2,7 +2,9 @@ package hospital.services;
 
 
 import hospital.models.Address;
+import hospital.models.Doctor;
 import hospital.models.Patient;
+import hospital.models.Speciality;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ public class TempAttributesToObj {
         Patient patient = new Patient();
         Address address = new Address();
         String id = request.getParameter("id");
-        if (id!=null) {
+        if (id!="") {
             patient.setId(Integer.parseInt(request.getParameter("id")));
             address.setId(Integer.parseInt(request.getParameter("addressId")));
         }
@@ -30,5 +32,20 @@ public class TempAttributesToObj {
 
         patient.setAddress(address);
         return patient;
+    }
+
+    public static Doctor getDoctor(HttpServletRequest request) {
+        Doctor doctor = new Doctor();
+        doctor.setId(Integer.parseInt(request.getParameter("id")));
+        doctor.setName(request.getParameter("name"));
+        doctor.setSurname(request.getParameter("surname"));
+        doctor.setTelephone(request.getParameter("phone"));
+        doctor.setCategory(Doctor.Category.valueOf(request.getParameter("category")));
+
+        String specialityName = request.getParameter("specialities");
+        Speciality speciality = SpecialityService.getByName(specialityName);
+        doctor.setSpeciality(speciality);
+
+        return doctor;
     }
 }

@@ -15,7 +15,7 @@ public class Autorization extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         User currentUser = TempUserService.getUser(); //TODO replace with autorization logic
-        request.getSession(true).setAttribute("user", currentUser);
+        request.getSession(true).setAttribute("currentUser", currentUser);
         response.sendRedirect("/patientsView");
 
     }
