@@ -2,10 +2,12 @@ package hospital.services;
 
 import hospital.models.Address;
 import hospital.models.Patient;
+import hospital.models.Visit;
 import hospital.repositories.concrete.Repository;
 
 
 import java.util.List;
+import java.util.Set;
 
 public class PatientService {
 
@@ -29,6 +31,7 @@ public class PatientService {
         Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);
         Patient entity = PatientService.getById(id);
         patientRepository.delete(entity);
+        patientRepository.close();
     }
 
     public static Patient getById(int id){
@@ -43,6 +46,13 @@ public class PatientService {
         List<Patient> patients = patientRepository.getAll();
         patientRepository.close();
         return patients;
+    }
+
+    public static Set<Visit> getVisits(int id) {
+        Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);
+        Set<Visit> visits = patientRepository.getById(id).getVisits();
+        //patientRepository.close();
+        return visits;
     }
 
 

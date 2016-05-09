@@ -51,4 +51,18 @@ public class User {
     public void setRoleName(RoleName roleName) {
         this.roleName = roleName;
     }
+
+    public boolean isAdmin() {
+        if (this.roleName == RoleName.Admin)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean isDoctor() {
+        if (this.roleName == RoleName.Doctor)
+            return true;
+        else
+            return false;
+    }
 }
