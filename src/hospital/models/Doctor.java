@@ -24,6 +24,10 @@ public class Doctor {
     private Category category;
     private String telephone;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @OneToMany(mappedBy = "doctor")
     private Set<Visit> visits;
 
@@ -80,4 +84,10 @@ public class Doctor {
         this.visits = visits;
     }
 
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

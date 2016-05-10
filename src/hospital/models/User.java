@@ -1,5 +1,8 @@
 package hospital.models;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +19,10 @@ public class User {
     private String salt;
 
     private RoleName roleName;
+
+    @OneToOne(mappedBy="users")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Doctor doctor;
 
     public int getId() {
         return id;
@@ -50,5 +57,12 @@ public class User {
     }
     public void setRoleName(RoleName roleName) {
         this.roleName = roleName;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 }
