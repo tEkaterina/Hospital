@@ -25,7 +25,7 @@ public class Doctor {
     private String telephone;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @PrimaryKeyJoinColumn
     private User user;
 
     @OneToMany(mappedBy = "doctor")

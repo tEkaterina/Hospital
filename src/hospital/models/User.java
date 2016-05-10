@@ -20,7 +20,7 @@ public class User {
 
     private RoleName roleName;
     
-    @OneToOne(mappedBy="users")
+    @OneToOne(mappedBy="user")
     @NotFound(action = NotFoundAction.IGNORE)
     private Doctor doctor;
 
