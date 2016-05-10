@@ -47,4 +47,6 @@ public class DoctorService {
         //DoctorRepository.close();
         return visits;
     }
+
+
 }

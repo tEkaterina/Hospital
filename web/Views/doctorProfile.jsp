@@ -9,7 +9,7 @@
 
   <!-- Navigation -->
   <li><a href="/patientsView">Cписок пациентов</a></li>
-  <li><a href="">Мои визиты</a></li>
+  <li><a href="/doctorVisit">Мои визиты</a></li>
 
 </body>
 </html>

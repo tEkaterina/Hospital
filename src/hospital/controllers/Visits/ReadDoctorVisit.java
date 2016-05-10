@@ -1,8 +1,7 @@
 package hospital.controllers.Visits;
 
-//import hospital.services.VisitService;
-
-import hospital.services.VisitService;
+import hospital.models.User;
+import hospital.services.DoctorService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,15 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/deleteVisit")
-public class DeleteVisit extends HttpServlet {
+@WebServlet("/doctorVisit")
+public class ReadDoctorVisit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        VisitService.delete(id);
-        response.sendRedirect("/patientsView");
+
+        User user = (User)request.getSession().getAttribute("currentUser");
+        request.setAttribute("visits", DoctorService.getVisits(user.getDoctor().getId()));
+        request.getRequestDispatcher("/Views/doctor'sVisitsView.jsp").forward(request, response);
     }
 }

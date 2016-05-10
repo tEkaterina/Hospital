@@ -19,7 +19,9 @@ public class Autorization extends HttpServlet {
         if (currentUser.isDoctor()) {
             request.getRequestDispatcher("/Views/doctorProfile.jsp").forward(request, response);
         }
-        //response.sendRedirect("/patientsView");
+        if (currentUser.isAdmin()) {
+            request.getRequestDispatcher("/Views/adminProfile.jsp").forward(request, response);
+        }
 
     }
 
