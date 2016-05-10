@@ -8,7 +8,6 @@
 
 <table border ="1">
   <form action = "/createPatient" method="POST">
-    <input type="hidden" name="action" value="edit">
     <table border ="1">
       <tr>
         <td><input type="text" name="name" placeholder="Èìÿ"></td>
