@@ -1,6 +1,6 @@
 package hospital.controllers.Visits;
 
-import hospital.services.VisitService;
+//import hospital.services.VisitService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class UpdateVisit extends HttpServlet {
         request.setCharacterEncoding("windows-1251");
         int id = Integer.parseInt(request.getParameter("id"));
         String comment = request.getParameter("comment");
-        VisitService.update(id, comment);
+        //VisitService.update(id, comment);
         response.sendRedirect("/patientsView");
     }
 
