@@ -16,8 +16,10 @@
     <th>Корпус</th>
     <th>Квартира</th>
     <th>Визиты</th>
-    <th>Удалить</th>
-    <th>Изменить</th>
+    <c:if test="${currentUser.isAdmin()}">
+      <th>Удалить</th>
+      <th>Изменить</th>
+    </c:if>
   </tr>
   <c:forEach items = "${patients}" var="patient">
     <tr>
@@ -35,7 +37,7 @@
           <input type="submit" value="Открыть список визитов">
         </form>
       </td>
-
+      <c:if test="${currentUser.isAdmin()}">
       <td>
         <form action = "/deletePatient" method="get">
           <input type="hidden" name="id" value="${patient.getId()}">
@@ -49,15 +51,18 @@
           <input type="image" src="/Views/Images/edit.png">
         </form>
       </td>
+      </c:if>
     </tr>
   </c:forEach>
-  <form action = "/createPatient" method="get">
-    <tr >
-      <input type="hidden" name="id" value="0">
-      <td colspan="9">Создать пациента</td>
-      <td><input type="image" src="/Views/Images/add.png"></td>
-    </tr>
-  </form>
+  <c:if test="${currentUser.isAdmin()}">
+    <form action = "/createPatient" method="get">
+      <tr >
+        <input type="hidden" name="id" value="0">
+        <td colspan="9">Создать пациента</td>
+        <td><input type="image" src="/Views/Images/add.png"></td>
+      </tr>
+    </form>
+  </c:if>
 </table>
 
 </body>

@@ -16,7 +16,10 @@ public class Autorization extends HttpServlet {
 
         User currentUser = TempUserService.getUser(); //TODO replace with autorization logic
         request.getSession(true).setAttribute("currentUser", currentUser);
-        response.sendRedirect("/patientsView");
+        if (currentUser.isDoctor()) {
+            request.getRequestDispatcher("/Views/doctorProfile.jsp").forward(request, response);
+        }
+        //response.sendRedirect("/patientsView");
 
     }
 

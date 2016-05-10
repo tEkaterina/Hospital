@@ -29,7 +29,7 @@
       </form>
       </td>
     </tr>
-    <c:if test="${currentUser.isAdmin()}">
+    <c:if test="${currentUser.isAdmin() ||currentUser.getDoctor().getId()==visit.getDoctor().getId()}">
     <tr>
       <td>
         <form action = "/deleteVisit" method="get">
@@ -52,7 +52,7 @@
     <table border="2">
     <form action = "/createVisit" method="get">
       <tr >
-        <input type="hidden" name="id" value="0">
+        <input type="hidden" name="patientId" value="${patient.getId()}">
         <td>Добавить визит</td>
         <td><input type="image" src="/Views/Images/add.png"></td>
       </tr>

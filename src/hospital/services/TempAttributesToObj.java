@@ -62,4 +62,14 @@ public class TempAttributesToObj {
         analysis.setTriglycerides(Float.parseFloat(request.getParameter("triglycerides")));
         return analysis;
     }
+
+    public static Visit getVisit(HttpServletRequest request) {
+        Visit visit = new Visit();
+        visit.setComment(request.getParameter("comment"));
+        visit.setDate(new Date());
+        User user = (User)request.getSession().getAttribute("currentUser");
+        visit.setDoctor(user.getDoctor());
+        visit.setPatient(PatientService.getById(Integer.parseInt(request.getParameter("patientId"))));
+        return visit;
+    }
 }

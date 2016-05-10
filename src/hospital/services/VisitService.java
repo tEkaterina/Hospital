@@ -31,6 +31,12 @@ public class VisitService {
         visitRepository.close();
     }
 
+    public static void create(Visit entity){
+        Repository<Visit> visitRepository = new Repository<Visit>(Visit.class);
+       visitRepository.add(entity);
+        visitRepository.close();
+    }
+
     public static Set<Analysis> getAnalyzes(int id) {
 
         Repository<Visit> visitRepository = new Repository<Visit>(Visit.class);

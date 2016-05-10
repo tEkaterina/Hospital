@@ -25,7 +25,7 @@
       <td><c:out value="${analyz.getTriglycerides()} ללמכü/כ."/></td>
     </tr>
 
-    <c:if test="${currentUser.isAdmin()}">
+    <c:if test="${currentUser.isAdmin() ||currentUser.getDoctor().getId()==visit.getDoctor().getId()}">
       <tr>
         <td>
           <form action = "/deleteAnalyzes" method="get">
@@ -45,7 +45,7 @@
   </table>
 </c:forEach>
 
-<c:if test="${currentUser.isDoctor()}">
+<c:if test="${currentUser.getDoctor().getId()==visit.getDoctor().getId()}">
   <table border="2">
     <form action = "/createAnalyz" method="get">
       <tr >
