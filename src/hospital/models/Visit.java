@@ -25,7 +25,7 @@ public class Visit {
     @JoinColumn(name="patient_id")
     private Patient patient;
 
-    @OneToMany(mappedBy = "visit")
+    @OneToMany(mappedBy = "visit", cascade = CascadeType.ALL)
     private Set<Analysis> analyzes;
 
     public Visit(){

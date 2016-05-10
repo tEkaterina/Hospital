@@ -1,5 +1,8 @@
 package hospital.models;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +19,10 @@ public class User {
     private String salt;
 
     private RoleName roleName;
+    
+    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Doctor doctor;
 
     public int getId() {
         return id;
@@ -52,17 +59,18 @@ public class User {
         this.roleName = roleName;
     }
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+    
     public boolean isAdmin() {
-        if (this.roleName == RoleName.Admin)
-            return true;
-        else
-            return false;
+        return roleName == RoleName.Admin;
     }
 
     public boolean isDoctor() {
-        if (this.roleName == RoleName.Doctor)
-            return true;
-        else
-            return false;
+        return roleName == RoleName.Doctor;
     }
 }

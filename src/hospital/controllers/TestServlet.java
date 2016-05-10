@@ -17,7 +17,12 @@ public class TestServlet extends javax.servlet.http.HttpServlet {
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);
 
-        Patient p = patientRepository.getById(1);
+        Patient p = patientRepository.getByField("name", "Иван");
+        Patient p1 = new Patient();
+        p1.setName("Петька");
+        p1.setSurname("Валерьев");
+        patientRepository.add(p1);
+
         List<Patient> patients = patientRepository.getAll();
         request.setAttribute("patients", patients);
         request.setAttribute("p", p);
