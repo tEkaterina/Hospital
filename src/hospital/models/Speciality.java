@@ -14,7 +14,7 @@ public class Speciality {
     @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "speciality")
+    @OneToMany(mappedBy = "speciality", cascade = CascadeType.ALL)
     private Set<Doctor> doctors;
 
     public Speciality(){

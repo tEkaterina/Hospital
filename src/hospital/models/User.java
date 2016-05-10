@@ -20,7 +20,7 @@ public class User {
 
     private RoleName roleName;
     
-    @OneToOne(mappedBy="user")
+    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
     @NotFound(action = NotFoundAction.IGNORE)
     private Doctor doctor;
 

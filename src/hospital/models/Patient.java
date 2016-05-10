@@ -15,11 +15,11 @@ public class Patient {
     private String surname;
     private String clinicNumber; //TODO
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private Set<Visit> visits;
 
     public Patient(){

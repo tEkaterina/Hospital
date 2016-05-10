@@ -28,7 +28,7 @@ public class Doctor {
     @PrimaryKeyJoinColumn
     private User user;
 
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private Set<Visit> visits;
 
     public Doctor(){
