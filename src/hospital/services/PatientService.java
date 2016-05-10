@@ -15,7 +15,6 @@ public class PatientService {
         Repository<Address> addressRepository = new Repository<Address>(Address.class);
         addressRepository.add(entity.getAddress());
         addressRepository.close();
-
         Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);
         patientRepository.add(entity);
         patientRepository.close();
@@ -25,7 +24,6 @@ public class PatientService {
         Repository<Address> addressRepository = new Repository<Address>(Address.class);
         addressRepository.update(entity.getAddress());
         addressRepository.close();
-
         Repository<Patient> patientRepository = new Repository<Patient>(Patient.class);
         patientRepository.update(entity);
         patientRepository.close();
