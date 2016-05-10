@@ -1,6 +1,6 @@
 package hospital.controllers.Visits;
 
-//import hospital.services.VisitService;
+import hospital.services.VisitService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ public class DeleteVisit extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        //VisitService.delete(id);
+        VisitService.delete(id);
         response.sendRedirect("/patientsView");
     }
 }
