@@ -23,7 +23,7 @@
     </tr>
     <tr>
       <td colspan="2">
-      <form action = "/patientAnalysis" method="get">
+      <form action = "/analyzes" method="get">
         <input type="hidden" name="id" value="${visit.getId()}">
         <input type="submit" value="Просмотр списка анализов">
       </form>
