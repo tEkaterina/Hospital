@@ -39,13 +39,6 @@
       </td>
     </tr>
   </c:forEach>
-  <form action = "/updateDoctor" method="get">
-    <tr >
-      <input type="hidden" name="id" value="0">
-      <td colspan="6">Add</td>
-      <td><input type="image" src="/Views/Images/add.png"></td>
-    </tr>
-  </form>
 </table>
 
 </body>

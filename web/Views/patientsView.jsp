@@ -2,22 +2,22 @@
 <%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <html>
 <head>
-  <title>Patients</title>
+  <title>Список пациентов</title>
 </head>
 <body>
-
+<c:out value="${currentUser.getRoleName()}"/>
 <table border ="1">
   <tr>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Clinic number</th>
-    <th>Street</th>
-    <th>House</th>
-    <th>Housing</th>
-    <th>Apartment</th>
-    <th>Visits</th>
-    <th>Delete</th>
-    <th>Edit</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>№ клининики</th>
+    <th>Улица</th>
+    <th>Дом</th>
+    <th>Корпус</th>
+    <th>Квартира</th>
+    <th>Визиты</th>
+    <th>Удалить</th>
+    <th>Изменить</th>
   </tr>
   <c:forEach items = "${patients}" var="patient">
     <tr>
@@ -30,9 +30,9 @@
       <td><c:out value="${patient.getAddress().getHousing()}"/></td>
       <td><c:out value="${patient.getAddress().getApartment()}"/></td>
       <td>
-        <form action = "/visits" method="get">
-          <input type="hidden" name="id" value="${patient.getId()}">
-          <input type="submit" value="Visits">
+        <form action = "/patientVisits" method="get">
+          <input type="hidden" name="idPatient" value="${patient.getId()}">
+          <input type="submit" value="Открыть список визитов">
         </form>
       </td>
 
@@ -44,26 +44,18 @@
       </td>
 
       <td>
-        <form action = "/editPatient" method="get">
+        <form action = "/updatePatient" method="get">
           <input type="hidden" name="id" value="${patient.getId()}">
           <input type="image" src="/Views/Images/edit.png">
         </form>
       </td>
     </tr>
   </c:forEach>
-
-  <form action = "/addPatient" method="post">
-    <tr>
-      <td><input  type="text" name="name"></td>
-      <td><input  type="text" name="surname"></td>
-      <td><input  type="text" name="clinic"></td>
-      <td><input  type="text" name="street"></td>
-      <td><input  type="text" name="house"></td>
-      <td><input  type="text" name="housing"></td>
-      <td><input  type="text" name="apartment"></td>
-      <td>
-        <input type="image" src="/Views/Images/add.png">
-      </td>
+  <form action = "/createPatient" method="get">
+    <tr >
+      <input type="hidden" name="id" value="0">
+      <td colspan="9">Создать пациента</td>
+      <td><input type="image" src="/Views/Images/add.png"></td>
     </tr>
   </form>
 </table>

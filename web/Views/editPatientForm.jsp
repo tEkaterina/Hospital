@@ -1,46 +1,46 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <html>
 <head>
-  <title>Edit patient</title>
+  <title>Редактирование информации о пациенте</title>
 </head>
 <body>
 
 <table border ="1">
-<form action = "/editPatient" method="POST">
-  <input type="hidden" name="action" value="edit">
+<form action = "/updatePatient" method="POST">
   <table border ="1">
     <tr>
-      <th>Name</th>
+      <th>Имя</th>
       <td><input type="text" name="name" value="<c:out value="${patient.getName()}"/>"></td>
     </tr>
     <tr>
-      <th>Surname</th>
+      <th>Фамилия</th>
       <td><input type="text" name="surname" value="<c:out value="${patient.getSurname()}"/>"></td>
     </tr>
     <tr>
-      <th>Clinic</th>
+      <th>№ клиники</th>
       <td><input type="text" name="clinic" value="<c:out value="${patient.getClinicNumber()}"/>"></td>
     </tr>
     <tr>
-      <th>Street</th>
+      <th>Улица</th>
       <td><input  type="text" name="street" value="<c:out value="${patient.getAddress().getStreet()}"/>"></td>
     </tr>
     <tr>
-      <th>House</th>
+      <th>Дом</th>
       <td><input  type="text" name="house"value="<c:out value="${patient.getAddress().getHouse()}"/>"></td>
     </tr>
     <tr>
-      <th>Housing</th>
+      <th>Корпус</th>
       <td><input  type="text" name="housing"value="<c:out value="${patient.getAddress().getHousing()}"/>"></td>
     </tr>
     <tr>
-      <th>Apartment</th>
+      <th>Квартира</th>
       <td><input  type="text" name="apartment"value="<c:out value="${patient.getAddress().getApartment()}"/>"></td>
     </tr>
   </table>
   <input type="hidden" name="id" value="${patient.getId()}">
-  <input type="submit" value="Save changes">
+  <input type="hidden" name="addressId" value="${patient.getAddress().getId()}">
+  <input type="submit" value="Сохранить">
 </form>
 </table>
 </body>

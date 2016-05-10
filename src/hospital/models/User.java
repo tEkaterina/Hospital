@@ -19,7 +19,7 @@ public class User {
     private String salt;
 
     private RoleName roleName;
-
+    
     @OneToOne(mappedBy="users")
     @NotFound(action = NotFoundAction.IGNORE)
     private Doctor doctor;
@@ -64,5 +64,13 @@ public class User {
     }
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+    
+    public boolean isAdmin() {
+        return roleName == RoleName.Admin;
+    }
+
+    public boolean isDoctor() {
+        return roleName == RoleName.Doctor;
     }
 }
