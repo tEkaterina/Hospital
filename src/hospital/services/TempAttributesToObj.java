@@ -1,13 +1,12 @@
 package hospital.services;
 
 
-import hospital.models.Address;
-import hospital.models.Doctor;
-import hospital.models.Patient;
-import hospital.models.Speciality;
+import hospital.models.*;
 
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class TempAttributesToObj {
 
@@ -47,5 +46,20 @@ public class TempAttributesToObj {
         doctor.setSpeciality(speciality);
 
         return doctor;
+    }
+
+    public static Analysis getAnalyz(HttpServletRequest request) {
+
+        Analysis analysis = new Analysis();
+        String id = request.getParameter("id");
+        if (id!=null) {
+            analysis.setId(Integer.parseInt(id));
+        }
+        analysis.setDate(new Date());
+        analysis.setVisit(VisitService.getById(Integer.parseInt(request.getParameter("visitId"))));
+        analysis.setHbA1c(Float.parseFloat(request.getParameter("hbA1c")));
+        analysis.setTotalCholesterol(Float.parseFloat(request.getParameter("cholesterol")));
+        analysis.setTriglycerides(Float.parseFloat(request.getParameter("triglycerides")));
+        return analysis;
     }
 }
