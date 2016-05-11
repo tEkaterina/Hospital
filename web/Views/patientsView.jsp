@@ -48,6 +48,7 @@
       <td>
         <form action = "/updatePatient" method="get">
           <input type="hidden" name="id" value="${patient.getId()}">
+          <input type="hidden" name="addressId" value="${patient.getAddress().getId()}">
           <input type="image" src="/Views/Images/edit.png">
         </form>
       </td>

@@ -5,6 +5,11 @@
 </head>
 <body>
   <form action = "/logIn" method="POST">
+      <p><b>Введите логин:</b>
+        <input type = "text" name = "login">
+      </p>
+      <p><b>Введите пароль:</b>
+        <input type = "password" name = "password">
   <input type="submit" value="Войти">
   </form>
 </body>
