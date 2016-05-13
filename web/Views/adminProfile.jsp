@@ -8,6 +8,9 @@
 <!-- Navigation -->
 <li><a href="/patientsView">Cписок пациентов</a></li>
 <li><a href="/doctorsView">Список врачей</a></li>
+<li><a href="/addNewDoctor">Добавить врача</a></li>
+<li><a href="/addNewAdmin">Добавить администратора</a></li>
+<li><a href="/usersView">Список пользователей системы</a></li>
 
 <!-->
 </body>
