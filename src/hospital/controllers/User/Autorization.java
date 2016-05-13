@@ -32,7 +32,7 @@ public class Autorization extends HttpServlet {
         User currentUser = usersRepository.getByField("email", strLog);
         String salt = currentUser.getSalt();
         strPas = strPas + salt;
-        if (currentUser.getPassword().equals(HashCode.MD5(strPas))){
+        if (currentUser.getPassword().equals(HashCode.MD5(strPas)) && currentUser.getActivity()){
             request.getSession(true).setAttribute("currentUser", currentUser);
             if (currentUser.isDoctor()) {
             request.getRequestDispatcher("/Views/doctorProfile.jsp").forward(request, response);

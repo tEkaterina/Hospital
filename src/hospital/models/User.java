@@ -17,6 +17,7 @@ public class User {
     private String email;
     private String password;
     private String salt;
+    private boolean activity;
 
     private RoleName roleName;
     
@@ -65,7 +66,15 @@ public class User {
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
-    
+
+    public boolean getActivity() {
+        return activity;
+    }
+    public void setActivity(boolean activity) {
+        this.activity = activity;
+    }
+
+
     public boolean isAdmin() {
         return roleName == RoleName.Admin;
     }
