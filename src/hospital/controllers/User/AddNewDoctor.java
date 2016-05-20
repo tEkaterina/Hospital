@@ -4,6 +4,9 @@ import hospital.models.Doctor;
 import hospital.models.Speciality;
 import hospital.models.User;
 import hospital.repositories.concrete.Repository;
+import hospital.services.SpecialityService;
+import hospital.services.TempUserService;
+import hospital.services.UserService;
 
 import javax.print.Doc;
 import javax.servlet.ServletException;
@@ -37,28 +40,16 @@ public class AddNewDoctor extends HttpServlet {
 
         String pass = request.getParameter("password");
         String email = request.getParameter("email");
-        String salt = HashCode.saltGeneration().toString();
+        String salt = UserService.saltGeneration().toString();
         user.setSalt(salt);
         pass = pass + salt;
-        pass = HashCode.MD5(pass);
+        pass = UserService.MD5(pass);
         user.setPassword(pass);
         user.setEmail(email);
         user.setRoleName(User.RoleName.Admin);
         user.setDoctor(doctor);
         userRepository.add(user);
-
-        /*User currentUser = userRepository.getByField("email", email);
-        User currentUser1 = userRepository.getByField("email", email);
-        if (currentUser.equals(currentUser1)){
-           response.sendRedirect("/failed");
-        }
-        else
-        {
-            user.setPassword(pass);
-            user.setEmail(email);
-            userRepository.add(user);
-        }*/
-        response.sendRedirect("/userIsAdd");
+        response.sendRedirect("/success");
 
     }
 

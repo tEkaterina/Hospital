@@ -2,6 +2,7 @@ package hospital.services;
 
 
 import hospital.models.*;
+import hospital.repositories.concrete.Repository;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,5 +72,19 @@ public class TempAttributesToObj {
         visit.setDoctor(user.getDoctor());
         visit.setPatient(PatientService.getById(Integer.parseInt(request.getParameter("patientId"))));
         return visit;
+    }
+
+    public static User getAdmin(HttpServletRequest request){
+        User user = new User();
+        String pass = request.getParameter("password");
+        String email = request.getParameter("email");
+        String salt = UserService.saltGeneration().toString();
+        user.setSalt(salt);
+        pass = pass + salt;
+        pass = UserService.MD5(pass);
+        user.setPassword(pass);
+        user.setEmail(email);
+        user.setRoleName(User.RoleName.Admin);
+        return user;
     }
 }

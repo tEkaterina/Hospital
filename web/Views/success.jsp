@@ -13,10 +13,6 @@
 <body>
 <form action="/success" method = "post">
 <b>Welcome, dear ladies and gentlemen!</b>
-  <input type = "submit" value="Добавить нового пользователя">
-  <p><input type="radio" name="user" value="admin">Admin</p>
-  <p><input type="radio" name="user" value="doctor">Doctor</p>
-  <p>
   </form>
 </body>
 </html>
