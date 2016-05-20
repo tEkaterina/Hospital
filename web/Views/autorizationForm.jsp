@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-  <form action = "/logIn" method="POST">
+  <form action = "/" method="POST">
       <p><b>¬ведите логин:</b>
         <input type = "text" name = "login">
       </p>

@@ -3,7 +3,6 @@ package hospital.controllers.User;
 import hospital.models.User;
 import hospital.repositories.concrete.Repository;
 import hospital.services.TempUserService;
-import hospital.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/logIn")
-public class Autorization extends HttpServlet {
+@WebServlet("")
+public class Authorization extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Repository<User> usersRepository = new Repository<User>(User.class);
         String strLog = request.getParameter("login");
         String strPas = request.getParameter("password");
 
@@ -31,10 +31,8 @@ public class Autorization extends HttpServlet {
             }
         }
         else{
-            response.sendRedirect("/logIn");
+            response.sendRedirect("");
         }
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +40,6 @@ public class Autorization extends HttpServlet {
         if (userRepository.getAll().isEmpty()){
             UserService.IsFirstAdmin();
         }
-
         request.getRequestDispatcher("/Views/autorizationForm.jsp").forward(request, response);
     }
 }
