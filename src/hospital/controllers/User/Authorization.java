@@ -2,7 +2,6 @@ package hospital.controllers.User;
 
 import hospital.models.User;
 import hospital.repositories.concrete.Repository;
-import hospital.services.TempUserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,18 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/logIn")
-public class Autorization extends HttpServlet {
+@WebServlet("")
+public class Authorization extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        /*User currentUser = TempUserService.getUser(); //TODO replace with autorization logic
-        request.getSession(true).setAttribute("currentUser", currentUser);
-        if (currentUser.isDoctor()) {
-            request.getRequestDispatcher("/Views/doctorProfile.jsp").forward(request, response);
-        }
-        if (currentUser.isAdmin()) {
-            request.getRequestDispatcher("/Views/adminProfile.jsp").forward(request, response);
-        }*/
 
         Repository<User> usersRepository = new Repository<User>(User.class);
         String strLog = request.getParameter("login");
@@ -42,10 +32,8 @@ public class Autorization extends HttpServlet {
             }
         }
         else{
-            response.sendRedirect("/logIn");
+            response.sendRedirect("");
         }
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,9 +48,9 @@ public class Autorization extends HttpServlet {
             pass = pass + salt;
             user.setPassword(HashCode.MD5(pass));
             user.setRoleName(User.RoleName.Admin);
+            user.setActivity(true);
             userRepository.add(user);
         }
-
         request.getRequestDispatcher("/Views/autorizationForm.jsp").forward(request, response);
     }
 }
