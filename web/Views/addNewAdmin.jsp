@@ -1,22 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Balashechka
-  Date: 10.05.2016
-  Time: 13:21
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Добавить нового админа</title>
-</head>
-<body>
-<form action="/addNewAdmin" method="post">
-  <p>Email</p>
-    <input type="email" name="email">
-  <p>Password</p>
-    <input type="password" name="password">
+<form class="form-horizontal" action="/addNewAdmin" method="post">
+  <div class="form-control">
+    <label for="email" class="col-sm-2 control-label">Email</label>
+    <input id="email" type="email" name="email">
+  </div>
+  <div class="form-control">
+    <label for="password" class="col-sm-2 control-label">Password</label>
+    <input id="password" type="password" name="password">
+  </div>
   <input type="submit" name="add">
 </form>
-</body>
-</html>

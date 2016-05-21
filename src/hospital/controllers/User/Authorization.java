@@ -3,6 +3,7 @@ package hospital.controllers.User;
 import hospital.models.User;
 import hospital.repositories.concrete.Repository;
 import hospital.services.TempUserService;
+import hospital.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,6 @@ import java.io.IOException;
 @WebServlet("")
 public class Authorization extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         Repository<User> usersRepository = new Repository<User>(User.class);
         String strLog = request.getParameter("login");
         String strPas = request.getParameter("password");
