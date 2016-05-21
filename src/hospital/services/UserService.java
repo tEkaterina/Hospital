@@ -1,12 +1,16 @@
 package hospital.services;
 
+import hospital.models.Doctor;
+import hospital.models.Speciality;
 import hospital.models.User;
 import hospital.repositories.concrete.Repository;
 
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.List;
 
 /**
  * Created by Balashechka on 20.05.2016.
@@ -18,6 +22,7 @@ public class UserService {
         adminRepository.add(admin);
         adminRepository.close();
     }
+
 
     public static String MD5(String st) {
         MessageDigest messageDigest = null;
@@ -83,4 +88,60 @@ public class UserService {
         user.setActivity(true);
         userRepository.add(user);
     }
+
+    public static boolean isValidAdmin(HttpServletRequest request) {
+        String pass = request.getParameter("password");
+        String email = request.getParameter("email");
+        Repository<User> userRepository = new Repository<User>(User.class);
+        User user = userRepository.getByField("email", email);
+        if (pass.equals("") || pass.length() > 30) {
+            return false;
+        }
+        if (user != null) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isValidDoctor(HttpServletRequest request) {
+        String pass = request.getParameter("password");
+        String email = request.getParameter("email");
+        String category = request.getParameter("category");
+        String phone = request.getParameter("phone");
+        String name = request.getParameter("name");
+        String surname = request.getParameter("surname");
+        Repository<User> userRepository = new Repository<User>(User.class);
+        User user = userRepository.getByField("email", email);
+        if (name.equals("") || name.length() > 50){
+            return false;
+        }
+        if (surname.equals("") || surname.length() > 50) {
+            return false;
+        }
+        if (!UserService.contains(category)){
+            return false;
+        }
+        if (phone.length() < 6 || phone.length() > 12) {
+            return false;
+        }
+        if (user != null) {
+            return false;
+        }
+        if (pass.length() < 3 || pass.length() > 30) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static boolean contains(String test) {
+
+        for (Doctor.Category c : Doctor.Category.values()) {
+            if (c.name().equals(test)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

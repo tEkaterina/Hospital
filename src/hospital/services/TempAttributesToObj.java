@@ -84,7 +84,26 @@ public class TempAttributesToObj {
         pass = UserService.MD5(pass);
         user.setPassword(pass);
         user.setEmail(email);
-        user.setRoleName(User.RoleName.Admin);
+        user.setActivity(true);
         return user;
     }
+    public static Doctor getDoctors(HttpServletRequest request) {
+        String category = request.getParameter("category");
+        User user = new User();
+        user.setRoleName(User.RoleName.Doctor);
+        Doctor doctor = new Doctor();
+        doctor.setName(request.getParameter("name"));
+        doctor.setSurname(request.getParameter("surname"));
+        doctor.setTelephone(request.getParameter("phone"));
+        doctor.setCategory(Doctor.Category.valueOf(category));
+
+
+        String specialityName = request.getParameter("specialities");
+        Speciality speciality = SpecialityService.getByName(specialityName);
+        doctor.setSpeciality(speciality);
+
+        return doctor;
+    }
+
+
 }

@@ -23,8 +23,14 @@ public class addNewAdmin extends HttpServlet {
 
         request.setCharacterEncoding("windows-1251");
         User admin = TempAttributesToObj.getAdmin(request);
-        UserService.addAdmin(admin);
-        response.sendRedirect("/success");
+        if (UserService.isValidAdmin(request)){
+            UserService.addAdmin(admin);
+            response.sendRedirect("/success");
+        }
+        else{
+            response.sendRedirect("/failed");
+        }
+
     }
 
     @Override
