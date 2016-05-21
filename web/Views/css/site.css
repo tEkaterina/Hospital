@@ -1,0 +1,96 @@
+body{
+    background-color: #F5E9BE;
+}
+
+.header{
+    color: #2C8B94 !important;
+    padding: 10px 30px 10px 30px;
+}
+
+nav{
+    background-color: #207178;
+}
+.nav-pills a{
+    color: #FFE184;
+}
+.nav-pills>li>a{
+    border-radius: 0 !important;
+}
+.nav-pills>li>a:focus,
+.nav-pills>li>a:hover {
+    background-color: #56B5BF !important;
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+    color: #FFE184 !important;
+    background-color: #2C8B94 !important;
+}
+
+.content{
+    padding: 30px;
+
+    background-color: #ffffff;
+
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+
+    -webkit-box-shadow: 10px 7px 5px -3px rgba(198,204,174,1);
+    -moz-box-shadow: 10px 7px 5px -3px rgba(198,204,174,1);
+    box-shadow: 10px 7px 5px -3px rgba(198,204,174,1);
+}
+
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+/* style icon */
+.inner-addon .fa {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    color: #207178;
+}
+/* align icon */
+.left-addon .fa  { left:  0px;}
+.right-addon .fa { right: 0px;}
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.form-title{
+    color: #2C8B94;
+    font-size: large;
+}
+
+.btn-success.blue {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-success.blue:focus,
+.btn-success.blue:active:focus,
+.btn-success.blue.active:focus {
+    outline: 0 none;
+}
+
+.btn-success.blue {
+    padding: 10px;
+    border: 0 none;
+    font-size: 12px;
+
+    background: #2C8B94;
+    color: #F2C46D;
+    margin: 0 7px 0 7px;
+}
+
+.btn-success.blue:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #1C747C;
+}
+
+.btn-success.blue:active, .btn-primary.active {
+    background: #56B6BF;
+}
