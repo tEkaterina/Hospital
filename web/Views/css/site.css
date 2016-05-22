@@ -30,7 +30,8 @@ nav{
 
 .content{
     padding: 30px;
-
+    margin-top: 30px;
+    margin-bottom: 30px;
     background-color: #ffffff;
 
     border-radius: 10px 10px 10px 10px;
@@ -58,8 +59,20 @@ nav{
 .left-addon .fa  { left:  0px;}
 .right-addon .fa { right: 0px;}
 /* add padding  */
-.left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
+
+.left-addon input {
+    padding-left:  30px;
+}
+.right-addon input {
+    padding-right: 30px;
+}
+
+.left-addon select{
+    padding-left: 30px !important;
+}
+.right-addon select {
+    padding-right: 30px !important;
+}
 
 .form-title{
     color: #2C8B94;

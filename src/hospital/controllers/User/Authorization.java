@@ -1,5 +1,6 @@
 package hospital.controllers.User;
 
+import com.sun.deploy.net.HttpRequest;
 import hospital.models.User;
 import hospital.repositories.concrete.Repository;
 import hospital.services.TempUserService;
@@ -23,12 +24,7 @@ public class Authorization extends HttpServlet {
 
         if (UserService.IsAuthorized(strLog, strPas)){
             request.getSession(true).setAttribute("currentUser", currentUser);
-            if (currentUser.isDoctor()) {
-                request.getRequestDispatcher("/Views/doctorProfile.jsp").forward(request, response);
-            }
-            if (currentUser.isAdmin()) {
-                request.getRequestDispatcher("/Views/adminProfile.jsp").forward(request, response);
-            }
+            redirectUser(currentUser, request, response);
         }
         else{
             response.sendRedirect("");
@@ -36,10 +32,26 @@ public class Authorization extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Repository<User> userRepository = new Repository<User>(User.class);
-        if (userRepository.getAll().isEmpty()){
-            UserService.IsFirstAdmin();
+        if (request.getSession().getAttribute("currentUser") == null) {
+            Repository<User> userRepository = new Repository<User>(User.class);
+            if (userRepository.getAll().isEmpty()) {
+                UserService.IsFirstAdmin();
+            }
+            request.getRequestDispatcher("/Views/autorizationForm.jsp").forward(request, response);
         }
-        request.getRequestDispatcher("/Views/autorizationForm.jsp").forward(request, response);
+        else{
+            User currentUser = (User)request.getSession().getAttribute("currentUser");
+            redirectUser(currentUser, request, response);
+        }
+    }
+
+    private void redirectUser(User currentUser, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        if (currentUser.isDoctor()) {
+            request.getRequestDispatcher("/Views/doctorProfile.jsp").forward(request, response);
+        }
+        if (currentUser.isAdmin()) {
+            request.getRequestDispatcher("/Views/adminProfile.jsp").forward(request, response);
+        }
     }
 }

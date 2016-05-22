@@ -33,11 +33,8 @@ public class AddNewDoctor extends HttpServlet {
         }
     }
 
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
       request.setAttribute("specialities", SpecialityService.getAll());
       request.getRequestDispatcher("/Views/addNewDoctor.jsp").forward(request, response);
     }
