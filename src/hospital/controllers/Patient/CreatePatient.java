@@ -2,9 +2,11 @@ package hospital.controllers.Patient;
 
 import hospital.models.Address;
 import hospital.models.Patient;
+import hospital.models.User;
 import hospital.repositories.concrete.Repository;
 import hospital.services.PatientService;
 import hospital.services.TempAttributesToObj;
+import hospital.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,6 +28,9 @@ public class CreatePatient extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/Views/createPatientForm.jsp").forward(request, response);
+        User user = (User)request.getSession().getAttribute("currentUser");
+        request.setAttribute("partialPage", "/Views/createPatientForm.jsp");
+        request.setAttribute("activeNavPill", "patient");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }
 }

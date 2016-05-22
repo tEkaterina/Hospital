@@ -22,7 +22,7 @@ public class ReadPatients extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("patients", PatientService.getAll());
         request.setAttribute("partialPage", "/Views/patientsView.jsp");
-        request.setAttribute("activeNavPill", "patientsView");
+        request.setAttribute("activeNavPill", "patient");
         User user = (User) request.getSession().getAttribute("currentUser");
         request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }

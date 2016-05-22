@@ -1,8 +1,10 @@
 package hospital.controllers.Doctor;
 
 import hospital.models.Doctor;
+import hospital.models.User;
 import hospital.repositories.concrete.Repository;
 import hospital.services.DoctorService;
+import hospital.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +21,10 @@ public class ReadDoctors extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.setAttribute("doctors", DoctorService.getAll());
-        request.getRequestDispatcher("/Views/doctorsView.jsp").forward(request, response);
+        User user = (User)request.getSession().getAttribute("currentUser");
+        request.setAttribute("partialPage", "/Views/doctorsView.jsp");
+        request.setAttribute("activeNavPill", "doctor");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }
 }

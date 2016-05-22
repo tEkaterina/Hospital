@@ -16,30 +16,35 @@
 <nav>
   <ul id="navbar" class="nav nav-pills">
     <li role="presentation"
-        <c:if test="${activeNavPill.equals('patientsView')}">
-          class="active"
-        </c:if>
-        ><a href="/patientsView">Cписок пациентов</a></li>
+        class="dropdown <c:out value="${activeNavPill.equals('patient')? 'active' : ''}"/>">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        Пациент  <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="/patientsView">Показать всех пациентов</a></li>
+        <li><a href="/createPatient">Добавить нового пациента</a></li>
+      </ul>
+    </li>
     <li role="presentation"
-        <c:if test="${activeNavPill.equals('doctorsView')}">
-          class="active"
-        </c:if>
-        ><a href="/doctorsView">Список врачей</a></li>
+        class="dropdown <c:out value="${activeNavPill.equals('doctor')? 'active' : ''}"/>">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        Доктор  <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="/doctorsView">Показать всех докторов</a></li>
+        <li><a href="/addNewDoctor">Добавить нового доктора</a></li>
+      </ul>
+    </li>
     <li role="presentation"
-      <c:if test="${activeNavPill.equals('addNewDoctor')}">
-        class="active"
-      </c:if>
-      ><a href="/addNewDoctor">Добавить врача</a></li>
-    <li role="presentation"
-      <c:if test="${activeNavPill.equals('addNewAdmin')}">
-        class="active"
-      </c:if>
-      ><a href="/addNewAdmin">Добавить администратора</a></li>
-    <li role="presentation"
-      <c:if test="${activeNavPill.equals('usersView')}">
-        class="active"
-      </c:if>
-      ><a href="/usersView">Список пользователей системы</a></li>
+        class="dropdown <c:out value="${activeNavPill.equals('user')? 'active' : ''}"/>">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        Пользователи системы  <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="/usersView">Показать всех пользователей</a></li>
+        <li><a href="/addNewAdmin">Добавить нового администратора</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 <div class="container-fluid">
@@ -49,12 +54,9 @@
 </div>
 <footer></footer>
 </body>
-<script src="../../libs/bootstrap/js/jquery-2.2.4.min.js"/>
-<script src="../../libs/bootstrap/js/bootstrap.min.js" />
-<script src="../../libs/angularjs/angular.min.js" />
-<script src="../../libs/angularjs/angular-route.min.js" />
-<script src="../../libs/angularjs/ui-bootstrap-custom-1.3.2.min.js" />
-<script src="../../libs/angularjs/ui-bootstrap-custom-tpls-1.3.2.min.js" />
-<script src="../js/hospitalApp.js"/>
-<script src="../js/pageController.js"/>
+<script src="../../libs/bootstrap/js/jquery-2.2.4.min.js"></script>
+<script src="../../libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../libs/bootstrap/js/npm.js"></script>
+<script src="../js/hospitalApp.js"></script>
+<script src="../js/pageController.js"></script>
 </html>

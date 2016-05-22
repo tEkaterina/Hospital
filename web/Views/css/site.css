@@ -109,7 +109,8 @@ nav{
 }
 
 button>i.fa{
-    margin: 5px 10px 5px 0;
+    margin: 5px 5px 5px 0;
+    color: #2C8B94;
 }
 
 form.tool-form{
@@ -119,4 +120,12 @@ form.tool-form{
 }
 .tool-form>.btn{
     margin-right: 7px;
+    margin-left: 7px;
+}
+.tool-form>.btn{
+    padding: 4px;
+}
+.panel-info>.panel-heading{
+    background-color: #207178 !important;
+    color: #F2C46D;
 }

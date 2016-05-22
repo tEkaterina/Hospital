@@ -1,11 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=windows-1251" language="java" %>
-<html>
-<head>
-  <title>Список пользователей</title>
-</head>
-<body>
-<c:out value="${currentUser.getRoleName()}"/>
+
+
 <table border ="1">
   <tr>
     <th>Логин</th>
