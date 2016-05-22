@@ -23,25 +23,8 @@
         <li><a href="/createPatient">Добавить нового пациента</a></li>
       </ul>
     </li>
-    <li role="presentation"
-        class="dropdown <c:out value="${activeNavPill.equals('doctor')? 'active' : ''}"/>">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-        Доктор  <i class="fa fa-caret-down"></i>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a href="/doctorsView">Показать всех докторов</a></li>
-        <li><a href="/addNewDoctor">Добавить нового доктора</a></li>
-      </ul>
-    </li>
-    <li role="presentation"
-        class="dropdown <c:out value="${activeNavPill.equals('user')? 'active' : ''}"/>">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-        Пользователи системы  <i class="fa fa-caret-down"></i>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a href="/usersView">Показать всех пользователей</a></li>
-        <li><a href="/addNewAdmin">Добавить нового администратора</a></li>
-      </ul>
+    <li role="presentation" class="<c:out value="${activeNavPill.equals('view') ? 'active': ''}"/>">
+      <a href="/doctorVisit">Мои осмотры</a>
     </li>
   </ul>
 </nav>
@@ -56,6 +39,4 @@
 <script src="../../libs/bootstrap/js/jquery-2.2.4.min.js"></script>
 <script src="../../libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="../../libs/bootstrap/js/npm.js"></script>
-<script src="../js/hospitalApp.js"></script>
-<script src="../js/pageController.js"></script>
 </html>

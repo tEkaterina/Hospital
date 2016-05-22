@@ -20,9 +20,11 @@ public class AddNewDoctor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("windows-1251");
+        User user = TempAttributesToObj.getUser(request);
+        String pass = request.getParameter("password");
         if (UserService.isValidDoctor(request)) {
             Doctor doctor = TempAttributesToObj.getDoctor(request);
-            User user = TempAttributesToObj.getUser(request);
+
             UserService.addDoctor(user, doctor);
 
             request.getSession().setAttribute("messageStatus", "success");

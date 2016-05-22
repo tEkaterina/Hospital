@@ -92,17 +92,16 @@ public class UserService {
         userRepository.add(user);
     }
 
-    public static boolean isValidAdmin(HttpServletRequest request) {
-        String pass = request.getParameter("password");
-        String email = request.getParameter("email");
+    public static boolean isValidAdmin(User admin, String password) {
         Repository<User> userRepository = new Repository<User>(User.class);
-        User user = userRepository.getByField("email", email);
-        if (pass.equals("") || pass.length() > 30) {
+        if (admin == null || password == null ||
+               password.equals("") || password.length() > 30)
             return false;
-        }
-        if (user != null) {
-            return false;
-        }
+
+        User user = userRepository.getByField("email", admin.getEmail());
+        if (user != null) return false;
+
+        if (admin.getRoleName() == null) return false;
         return true;
     }
 

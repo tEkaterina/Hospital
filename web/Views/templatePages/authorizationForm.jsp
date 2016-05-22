@@ -4,17 +4,24 @@
     <title></title>
     <meta http-equiv="content-language" content="ru">
     <meta name="description" content="">
-    <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../Views/css/site.css">
+    <link rel="stylesheet" href="../../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../Views/css/site.css">
 </head>
 <body>
-<header>
-    <h1 class="header"><i class="fa fa-heartbeat" aria-hidden="true"></i> HOSPITAL</h1>
-</header>
-<nav style="height: 40px; margin: 0 0 30px 0;">
+<div class="container-fluid">
+    <div class="row">
+        <header>
+            <div class="col-sm-5">
+                <h1 class="header"><i class="fa fa-heartbeat" aria-hidden="true"></i> Медицинкий центр лечения сахарного диабета</h1>
+            </div>
+        </header>
+    </div>
+</div>
+<nav style="height: 40px; margin: 0;">
 </nav>
 <div class="container-fluid">
+    <%@include file="../Partial/alertDialog.jsp"%>
     <div class="content col-sm-offset-3 col-sm-6">
         <div style="text-align: center;">
             <label class="form-title">Вход в систему</label>
@@ -36,10 +43,10 @@
 </div>
 <footer></footer>
 </body>
-<script src="../libs/bootstrap/js/jquery-2.2.4.min.js"/>
-<script src="../libs/bootstrap/js/bootstrap.min.js" />
-<script src="../libs/angularjs/angular.min.js" />
-<script src="../libs/angularjs/angular-route.min.js" />
-<script src="../libs/angularjs/ui-bootstrap-custom-1.3.2.min.js" />
-<script src="../libs/angularjs/ui-bootstrap-custom-tpls-1.3.2.min.js" />
+<script src="../../libs/bootstrap/js/jquery-2.2.4.min.js"></script>
+<script src="../../libs/bootstrap/js/bootstrap.min.js" ></script>
+<script src="../../libs/angularjs/angular.min.js" ></script>
+<script src="../../libs/angularjs/angular-route.min.js" ></script>
+<script src="../../libs/angularjs/ui-bootstrap-custom-1.3.2.min.js" ></script>
+<script src="../../libs/angularjs/ui-bootstrap-custom-tpls-1.3.2.min.js" ></script>
 </html>

@@ -15,6 +15,7 @@ public class Visit {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
+    @Column(columnDefinition = "TEXT")
     private String comment;
 
     @ManyToOne

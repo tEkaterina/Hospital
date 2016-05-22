@@ -67,16 +67,20 @@ public class TempAttributesToObj {
         user.setEmail(email);
         user.setActivity(true);
         user.setSalt(salt);
-
-        pass = pass + salt;
-        pass = UserService.MD5(pass);
-        user.setPassword(pass);
+        if (pass != null && !pass.equals("")) {
+            pass = pass + salt;
+            pass = UserService.MD5(pass);
+            user.setPassword(pass);
+        }
         return user;
     }
 
     public static Doctor getDoctor(HttpServletRequest request) {
         Doctor doctor = new Doctor();
-        doctor.setId(Integer.parseInt(request.getParameter("id")));
+        String id = request.getParameter("id");
+        if (id != null) {
+            doctor.setId(Integer.parseInt(id));
+        }
         doctor.setName(request.getParameter("name"));
         doctor.setSurname(request.getParameter("surname"));
         doctor.setTelephone(request.getParameter("phone"));

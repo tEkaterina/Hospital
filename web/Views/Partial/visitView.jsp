@@ -31,7 +31,8 @@
         <tr>
           <td><i class="fa fa-comment" aria-hidden="true"></i></td>
           <td>Комментарий</td>
-          <td><c:out value="${visit.getComment()}"/></td>
+          <td>
+            <input value="${visit.getComment()}" type=""/>/></td>
         </tr>
         <tr>
           <td><i class="fa fa-user" aria-hidden="true"></i></td>

@@ -27,20 +27,22 @@ public class Authorization extends HttpServlet {
             request.getRequestDispatcher(UserService.getTemplatePage(currentUser)).forward(request, response);
         }
         else{
-            response.sendRedirect("");
+            request.getSession().setAttribute("message", "Произошла ошибка авторизации.");
+            request.getSession().setAttribute("messageStatus", "error");
+            response.sendRedirect("/");
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("currentUser") == null) {
+        User currentUser = (User)request.getSession().getAttribute("currentUser");
+        if (currentUser == null) {
             Repository<User> userRepository = new Repository<User>(User.class);
             if (userRepository.getAll().isEmpty()) {
                 UserService.IsFirstAdmin();
             }
-            request.getRequestDispatcher("/Views/autorizationForm.jsp").forward(request, response);
+            request.getRequestDispatcher("/Views/templatePages/authorizationForm.jsp").forward(request, response);
         }
         else{
-            User currentUser = (User)request.getSession().getAttribute("currentUser");
             request.getRequestDispatcher(UserService.getTemplatePage(currentUser)).forward(request, response);
         }
     }

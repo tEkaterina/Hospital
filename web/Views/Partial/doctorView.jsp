@@ -9,14 +9,7 @@
             <form class="tool-form" action = "/updateDoctor" method="get">
               <button type="submit" class="btn btn-default btn-sm tool">
               <i class="fa fa-pencil tool-icon"></i>Редактировать</button>
-              <input type="hidden" name="id" value="${patient.getId()}">
-            </form>
-            <form id="${patient.getId()}Delete" class="tool-form" action = "/deleteDoctor" method="get">
-              <input type="hidden" name="id" value="${patient.getId()}">
-              <input type="hidden" name="addressId" value="${patient.getAddress().getId()}">
-              <button type="submit" class="btn btn-default btn-sm tool">
-                <i class="fa fa-user-times" aria-hidden="true"></i>Удалить
-              </button>
+              <input type="hidden" name="id" value="${doctor.getId()}">
             </form>
           </span>
         </label>
@@ -37,6 +30,16 @@
             <td><i class="fa fa-phone" aria-hidden="true"></i></td>
             <td>Телефон</td>
             <td><c:out value="${doctor.getTelephone()}"/></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
+            <td>Email</td>
+            <td><c:out value="${doctor.getUser().getEmail()}"/></td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-gavel" aria-hidden="true"></i></td>
+            <td>Имеет доступ к системе</td>
+            <td><c:out value="${doctor.getUser().getActivity()}"/></td>
           </tr>
         </table>
       </div>

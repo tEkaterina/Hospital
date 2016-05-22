@@ -20,12 +20,18 @@ public class addNewAdmin extends HttpServlet {
 
         request.setCharacterEncoding("windows-1251");
         User admin = TempAttributesToObj.getUser(request);
-        if (UserService.isValidAdmin(request)){
+        admin.setRoleName(User.RoleName.Admin);
+        String pass = request.getParameter("password");
+        if (UserService.isValidAdmin(admin, pass)){
             UserService.addAdmin(admin);
-            response.sendRedirect("/success");
+            request.getSession().setAttribute("messageStatus", "success");
+            request.getSession().setAttribute("message", "Администратор успешно добавлен!");
+            response.sendRedirect("/usersView");
         }
         else{
-            response.sendRedirect("/failed");
+            request.getSession().setAttribute("messageStatus", "error");
+            request.getSession().setAttribute("message", "Во время добавления администратора обнаружена ошибка. Проверьте введенные данные.");
+            response.sendRedirect("/addNewAdmin");
         }
     }
 
