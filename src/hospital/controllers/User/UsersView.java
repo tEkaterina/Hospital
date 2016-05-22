@@ -3,6 +3,7 @@ package hospital.controllers.User;
 import hospital.models.Doctor;
 import hospital.models.User;
 import hospital.repositories.concrete.Repository;
+import hospital.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,9 @@ public class UsersView extends HttpServlet {
         List<User> users = userRepository.getAll();
         userRepository.close();
         request.setAttribute("users", users);
-        request.getRequestDispatcher("/Views/userView.jsp").forward(request, response);
+        request.setAttribute("partialPage", "/Views/usersView.jsp");
+        request.setAttribute("activeNavPill", "user");
+        User user = (User) request.getSession().getAttribute("currentPage");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }
 }

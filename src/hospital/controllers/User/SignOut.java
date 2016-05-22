@@ -7,18 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by Balashechka on 21.05.2016.
- */
-@WebServlet("/failed")
-public class Failed extends HttpServlet {
-    @Override
+@WebServlet("/signOut")
+public class SignOut extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/Views/Failed.jsp").forward(request, response);
+        request.getSession().removeAttribute("currentUser");
+        response.sendRedirect("/");
     }
 }
-

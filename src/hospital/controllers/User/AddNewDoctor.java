@@ -21,13 +21,18 @@ public class AddNewDoctor extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("windows-1251");
         if (UserService.isValidDoctor(request)) {
-            Doctor doctor = TempAttributesToObj.getDoctors(request);
-            User user = TempAttributesToObj.getAdmin(request);
+            Doctor doctor = TempAttributesToObj.getDoctor(request);
+            User user = TempAttributesToObj.getUser(request);
             UserService.addDoctor(user, doctor);
-            response.sendRedirect("/success");
+
+            request.getSession().setAttribute("messageStatus", "success");
+            request.getSession().setAttribute("message", "Доктор успешно добавлен!");
+            response.sendRedirect("/doctorsView");
         }
         else {
-            response.sendRedirect("/failed");
+            request.getSession().setAttribute("messageStatus", "error");
+            request.getSession().setAttribute("message", "Во время добавления доктора обнаружена ошибка. Проверьте введенные данные.");
+            response.sendRedirect("/addNewDoctor");
         }
     }
 

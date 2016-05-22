@@ -1,3 +1,19 @@
+@font-face {
+    font-family: Qlassik;
+    src: url(../fonts/Qlassik%20Medium.ttf);
+}
+@font-face{
+    font-family: BloggerSans;
+    src: url(../fonts/BloggerSans.otf);
+}
+@font-face {
+    font-family: NautilusPompilius;
+    src: url(../fonts/NautilusPompilius.otf);
+}
+@font-face{
+    font-family: KatherinePlus;
+    src: url(../fonts/KatherinePlus.ttf);
+}
 body{
     background-color: #F5E9BE;
 }
@@ -5,6 +21,7 @@ body{
 .header{
     color: #2C8B94 !important;
     padding: 10px 30px 10px 30px;
+    font-family: BloggerSans;
 }
 
 nav{
@@ -128,4 +145,10 @@ form.tool-form{
 .panel-info>.panel-heading{
     background-color: #207178 !important;
     color: #F2C46D;
+    font-family: BloggerSans;
+    font-size: 18px;
+}
+.panel-info{
+    font-family: NautilusPompilius;
+    font-size: 32px;
 }

@@ -10,9 +10,25 @@
   <link rel="stylesheet" href="../../Views/css/site.css">
 </head>
 <body>
-<header>
-  <h1 class="header"><i class="fa fa-heartbeat" aria-hidden="true"></i> HOSPITAL</h1>
-</header>
+<div class="container-fluid">
+  <div class="row">
+    <header>
+      <div class="col-sm-5">
+        <h1 class="header"><i class="fa fa-heartbeat" aria-hidden="true"></i> Медицинкий центр лечения сахарного диабета</h1>
+      </div>
+      <div class="col-sm-offset-2 col-sm-5">
+        <form class="tool-form pull-right"
+              style="margin: 30px 10px 10px 10px !important;
+                      font-family: BloggerSans;"
+              action="/signOut" method="get">
+          <button class="btn btn-default">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Выход
+          </button>
+        </form>
+      </div>
+    </header>
+  </div>
+</div>
 <nav>
   <ul id="navbar" class="nav nav-pills">
     <li role="presentation"
@@ -48,6 +64,18 @@
   </ul>
 </nav>
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3" style="margin-top: 30px;">
+      <c:if test="${message != null && messageStatus != null}">
+        <div class="alert <c:out value="${message.equals('success') ? 'alert-success' : 'alert-danger'}"/>">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">X</a>
+          <c:out value="${message}"/>
+          <c:set var="message" value="${null}" scope="session"/>
+          <c:set var="messageStatus" value="${null}" scope="session"/>
+        </div>
+      </c:if>
+    </div>
+  </div>
   <c:if test="${partialPage != null && ! partialPage.equals('')}">
     <c:import url="${partialPage}"></c:import>
   </c:if>

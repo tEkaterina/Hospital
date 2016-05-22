@@ -12,26 +12,18 @@ import java.io.IOException;
 @WebServlet("/block")
 public class Block extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         int id = Integer.parseInt(request.getParameter("id"));
+
         Repository<User> userRepository = new Repository< User>(User.class);
         User user = userRepository.getById(id);
-        user.setActivity(true);
+        user.setActivity(!user.getActivity());
         userRepository.update(user);
         userRepository.close();
-        request.getRequestDispatcher("/Views/adminProfile.jsp").forward(request, response);
 
+        response.sendRedirect("/usersView");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        int id = Integer.parseInt(request.getParameter("id"));
-        Repository<User> userRepository = new Repository< User>(User.class);
-        User user = userRepository.getById(id);
-        user.setActivity(false);
-        userRepository.update(user);
-        userRepository.close();
-        request.getRequestDispatcher("/Views/adminProfile.jsp").forward(request, response);
 
     }
 }

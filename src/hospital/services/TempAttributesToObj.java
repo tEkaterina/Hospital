@@ -16,14 +16,13 @@ public class TempAttributesToObj {
         Patient patient = new Patient();
         Address address = new Address();
         String id = request.getParameter("id");
-        if (id!="") {
+        if (!id.equals("")) {
             patient.setId(Integer.parseInt(request.getParameter("id")));
             address.setId(Integer.parseInt(request.getParameter("addressId")));
         }
         patient.setName(request.getParameter("name"));
         patient.setSurname(request.getParameter("surname"));
         patient.setClinicNumber(request.getParameter("clinic"));
-
 
         address.setStreet(request.getParameter("street"));
         address.setHouse(request.getParameter("house"));
@@ -34,23 +33,7 @@ public class TempAttributesToObj {
         return patient;
     }
 
-    public static Doctor getDoctor(HttpServletRequest request) {
-        Doctor doctor = new Doctor();
-        doctor.setId(Integer.parseInt(request.getParameter("id")));
-        doctor.setName(request.getParameter("name"));
-        doctor.setSurname(request.getParameter("surname"));
-        doctor.setTelephone(request.getParameter("phone"));
-        doctor.setCategory(Doctor.Category.valueOf(request.getParameter("category")));
-
-        String specialityName = request.getParameter("specialities");
-        Speciality speciality = SpecialityService.getByName(specialityName);
-        doctor.setSpeciality(speciality);
-
-        return doctor;
-    }
-
-    public static Analysis getAnalyz(HttpServletRequest request) {
-
+    public static Analysis getAnalysis(HttpServletRequest request) {
         Analysis analysis = new Analysis();
         String id = request.getParameter("id");
         if (id!=null) {
@@ -74,29 +57,30 @@ public class TempAttributesToObj {
         return visit;
     }
 
-    public static User getAdmin(HttpServletRequest request){
+    public static User getUser(HttpServletRequest request){
         User user = new User();
+
         String pass = request.getParameter("password");
         String email = request.getParameter("email");
         String salt = UserService.saltGeneration().toString();
+
+        user.setEmail(email);
+        user.setActivity(true);
         user.setSalt(salt);
+
         pass = pass + salt;
         pass = UserService.MD5(pass);
         user.setPassword(pass);
-        user.setEmail(email);
-        user.setActivity(true);
         return user;
     }
-    public static Doctor getDoctors(HttpServletRequest request) {
-        String category = request.getParameter("category");
-        User user = new User();
-        user.setRoleName(User.RoleName.Doctor);
+
+    public static Doctor getDoctor(HttpServletRequest request) {
         Doctor doctor = new Doctor();
+        doctor.setId(Integer.parseInt(request.getParameter("id")));
         doctor.setName(request.getParameter("name"));
         doctor.setSurname(request.getParameter("surname"));
         doctor.setTelephone(request.getParameter("phone"));
-        doctor.setCategory(Doctor.Category.valueOf(category));
-
+        doctor.setCategory(Doctor.Category.valueOf(request.getParameter("category")));
 
         String specialityName = request.getParameter("specialities");
         Speciality speciality = SpecialityService.getByName(specialityName);
@@ -104,6 +88,4 @@ public class TempAttributesToObj {
 
         return doctor;
     }
-
-
 }

@@ -19,7 +19,7 @@ public class addNewAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("windows-1251");
-        User admin = TempAttributesToObj.getAdmin(request);
+        User admin = TempAttributesToObj.getUser(request);
         if (UserService.isValidAdmin(request)){
             UserService.addAdmin(admin);
             response.sendRedirect("/success");

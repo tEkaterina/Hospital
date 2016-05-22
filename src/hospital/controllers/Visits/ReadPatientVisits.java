@@ -1,9 +1,11 @@
 package hospital.controllers.Visits;
 
 import hospital.models.Patient;
+import hospital.models.User;
 import hospital.models.Visit;
 import hospital.repositories.concrete.Repository;
 import hospital.services.PatientService;
+import hospital.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,11 +24,13 @@ public class ReadPatientVisits extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         int patientId = Integer.parseInt(request.getParameter("idPatient"));
         request.setAttribute("visits", PatientService.getVisits(patientId));
         request.setAttribute("patient", PatientService.getById(patientId));
-        request.getRequestDispatcher("/Views/patient'sVisitsView.jsp").forward(request, response);
+        request.setAttribute("partialPage", "/Views/patient'sVisitsView.jsp");
+        request.setAttribute("activeNavPill", "doctor");
+        User user = (User) request.getSession().getAttribute("currentUser");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
 
     }
 }

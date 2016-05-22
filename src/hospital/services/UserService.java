@@ -23,12 +23,12 @@ public class UserService {
 
     public static void addDoctor(User user, Doctor doctor){
         Repository<User> userRepository = new Repository<User>(User.class);
+        user.setRoleName(User.RoleName.Doctor);
         user.setDoctor(doctor);
         doctor.setUser(user);
 
         userRepository.save(doctor);
         userRepository.add(user);
-
         userRepository.close();
     }
 
@@ -66,12 +66,7 @@ public class UserService {
         User currentUser = usersRepository.getByField("email", strLog);
         String salt = currentUser.getSalt();
         strPas = strPas + salt;
-        if (currentUser.getPassword().equals(UserService.MD5(strPas)) && currentUser.getActivity()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return (currentUser.getPassword().equals(UserService.MD5(strPas)) && currentUser.getActivity());
     }
 
     public static User getCurrentUser(String strLog){
@@ -160,6 +155,6 @@ public class UserService {
                 return "/Views/templatePages/doctorTemplatePage.jsp";
             }
         }
-        return "autorizationForm";
+        return "";
     }
 }
