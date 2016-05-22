@@ -142,8 +142,7 @@ public class UserService {
         return true;
     }
 
-    public static boolean contains(String test) {
-
+    private static boolean contains(String test) {
         for (Doctor.Category c : Doctor.Category.values()) {
             if (c.name().equals(test)) {
                 return true;
@@ -152,4 +151,15 @@ public class UserService {
         return false;
     }
 
+    public static String getTemplatePage(User user){
+        if (user != null) {
+            if (user.getRoleName().equals(User.RoleName.Admin)) {
+                return "/Views/templatePages/adminTemplatePage.jsp";
+            }
+            else if(user.getRoleName().equals(User.RoleName.Doctor)){
+                return "/Views/templatePages/doctorTemplatePage.jsp";
+            }
+        }
+        return "autorizationForm";
+    }
 }

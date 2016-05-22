@@ -22,7 +22,7 @@ public class AddNewDoctor extends HttpServlet {
         request.setCharacterEncoding("windows-1251");
         if (UserService.isValidDoctor(request)) {
             Doctor doctor = TempAttributesToObj.getDoctors(request);
-            User user = TempAttributesToObj.getAdmin(request);;
+            User user = TempAttributesToObj.getAdmin(request);
             UserService.addDoctor(user, doctor);
             response.sendRedirect("/success");
         }
@@ -35,6 +35,9 @@ public class AddNewDoctor extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DoctorService.checkSpecialityList();
         request.setAttribute("specialities", SpecialityService.getAll());
-        request.getRequestDispatcher("/Views/addNewDoctor.jsp").forward(request, response);
+        request.setAttribute("partialPage", "/Views/addNewDoctor.jsp");
+        request.setAttribute("activeNavPill", "addNewDoctor");
+        User user = (User) request.getSession().getAttribute("currentUser");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }
 }

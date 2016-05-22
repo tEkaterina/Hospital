@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by Balashechka on 10.05.2016.
- */
 @WebServlet ("/addNewAdmin")
 public class addNewAdmin extends HttpServlet {
     @Override
@@ -30,11 +27,13 @@ public class addNewAdmin extends HttpServlet {
         else{
             response.sendRedirect("/failed");
         }
-
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/Views/addNewAdmin.jsp").forward(request, response);
+        request.setAttribute("partialPage", "/Views/addNewAdmin.jsp");
+        request.setAttribute("activeNavPill", "addNewAdmin");
+        User user = (User)request.getSession().getAttribute("currentUser");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }
 }

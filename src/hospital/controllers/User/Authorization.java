@@ -24,7 +24,7 @@ public class Authorization extends HttpServlet {
 
         if (UserService.IsAuthorized(strLog, strPas)){
             request.getSession(true).setAttribute("currentUser", currentUser);
-            redirectUser(currentUser, request, response);
+            request.getRequestDispatcher(UserService.getTemplatePage(currentUser)).forward(request, response);
         }
         else{
             response.sendRedirect("");
@@ -41,17 +41,7 @@ public class Authorization extends HttpServlet {
         }
         else{
             User currentUser = (User)request.getSession().getAttribute("currentUser");
-            redirectUser(currentUser, request, response);
-        }
-    }
-
-    private void redirectUser(User currentUser, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        if (currentUser.isDoctor()) {
-            request.getRequestDispatcher("/Views/doctorProfile.jsp").forward(request, response);
-        }
-        if (currentUser.isAdmin()) {
-            request.getRequestDispatcher("/Views/adminProfile.jsp").forward(request, response);
+            request.getRequestDispatcher(UserService.getTemplatePage(currentUser)).forward(request, response);
         }
     }
 }

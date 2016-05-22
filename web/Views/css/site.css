@@ -107,3 +107,16 @@ nav{
 .btn-success.blue:active, .btn-primary.active {
     background: #56B6BF;
 }
+
+button>i.fa{
+    margin: 5px 10px 5px 0;
+}
+
+form.tool-form{
+    display: inline-block;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.tool-form>.btn{
+    margin-right: 7px;
+}
