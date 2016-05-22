@@ -48,5 +48,11 @@ public class DoctorService {
         return visits;
     }
 
+    public static void addDoctor(Doctor doctor){
+        Repository<Doctor> doctorRepository = new Repository<Doctor>(Doctor.class);
+        doctorRepository.add(doctor);
+        doctorRepository.close();
+    }
+
 
 }

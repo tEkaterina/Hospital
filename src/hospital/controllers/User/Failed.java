@@ -6,19 +6,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
- * Created by Balashechka on 09.05.2016.
+ * Created by Balashechka on 21.05.2016.
  */
-@WebServlet("/success")
-public class Success extends HttpServlet{
+@WebServlet("/failed")
+public class Failed extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/Views/success.jsp").forward(request, response);
+        request.getRequestDispatcher("/Views/Failed.jsp").forward(request, response);
     }
 }
+

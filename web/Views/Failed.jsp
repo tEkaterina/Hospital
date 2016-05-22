@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="/failed" method = "post">
-  <b>Авторизация не произошла</b>
+  <b>Проверьте введенные данные</b>
 </form>
 </body>
 </html>
