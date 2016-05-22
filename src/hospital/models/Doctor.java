@@ -1,6 +1,11 @@
 package hospital.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import org.hibernate.annotations.Parameter;
+
 import javax.persistence.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +16,9 @@ public class Doctor {
     public enum Category { Первая, Вторая, Высшая }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="gen")
+    @GenericGenerator(name="gen", strategy="foreign",
+            parameters=@Parameter(name="property", value="user"))
     private int id;
 
     private String surname;

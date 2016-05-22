@@ -1,10 +1,8 @@
-<%@ page import="hospital.models.Doctor" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <html ng-app="hospitalApp" ng-controller="pageController">
 <head>
-  <title>РќРѕРІС‹Р№ РІСЂР°С‡</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Новый врач</title>
   <meta http-equiv="content-language" content="ru">
   <meta name="description" content="">
   <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.min.css">
@@ -17,59 +15,20 @@
 </header>
 <nav>
   <ul id="navbar" class="nav nav-pills">
-    <li role="presentation"><a href="/patientsView">CРїРёСЃРѕРє РїР°С†РёРµРЅС‚РѕРІ</a></li>
-    <li role="presentation"><a href="/doctorsView">РЎРїРёСЃРѕРє РІСЂР°С‡РµР№</a></li>
-    <li role="presentation" class="active"><a href="/addNewDoctor">Р”РѕР±Р°РІРёС‚СЊ РІСЂР°С‡Р°</a></li>
-    <li role="presentation"><a href="/addNewAdmin">Р”РѕР±Р°РІРёС‚СЊ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°</a></li>
-    <li role="presentation"><a href="/usersView">РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃРёСЃС‚РµРјС‹</a></li>
+    <li role="presentation"><a href="/patientsView">Cписок пациентов</a></li>
+    <li role="presentation"><a href="/doctorsView">Список врачей</a></li>
+    <li role="presentation" class="active"><a href="/addNewDoctor">Добавить врача</a></li>
+    <li role="presentation"><a href="/addNewAdmin">Добавить администратора</a></li>
+    <li role="presentation"><a href="/usersView">Список пользователей системы</a></li>
   </ul>
 </nav>
 <div class="container-fluid">
   <div class="content col-sm-offset-3 col-sm-6">
     <div style="text-align: center;">
-      <label class="form-title">Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ РґР»СЏ РЅРѕРІРѕРіРѕ РІСЂР°С‡Р°</label>
+      <label class="form-title">Введите данные для нового врача</label>
     </div>
     <form class="form-horizontal" action = "/addNewDoctor" method="post">
-      <div class="form-group inner-addon left-addon">
-        <i class="fa fa-user" aria-hidden="true"></i>
-        <input class="form-control" type="text" name="name" placeholder="РРјСЏ">
-      </div>
-      <div class="form-group inner-addon left-addon">
-        <i class="fa fa-user" aria-hidden="true"></i>
-        <input class="form-control" type="text" name="surname" placeholder="Р¤Р°РјРёР»РёСЏ">
-      </div>
-      <div class="form-group">
-        <label class="control-label col-sm-3">РљР°С‚РµРіРѕСЂРёСЏ</label>
-        <div class="col-sm-9">
-          <div class="inner-addon left-addon">
-            <c:set var="enumValues" value="<%=Doctor.Category.values()%>"/>
-            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-            <select class="form-control" name="category">
-              <c:forEach items="${enumValues}" var="enumValue">
-                <option><c:out value="${enumValue.toString()}"/></option>
-              </c:forEach>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-sm-3">РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ</label>
-        <div class="col-sm-9">
-          <div class="inner-addon left-addon">
-            <i class="fa fa-user-md" aria-hidden="true"></i>
-            <select class="form-control" name="specialities">
-              <c:forEach items = "${specialities}" var="speciality">
-                <option><c:out value="${speciality.getName()}"/></option>
-              </c:forEach>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="form-group inner-addon left-addon">
-        <i class="fa fa-phone" aria-hidden="true"></i>
-        <input class="form-control" type="text" name="phone" placeholder="РўРµР»РµС„РѕРЅ">
-      </div>
-      <%@include file="Partial/newUserForm.jsp"%>
+      <%@include file="Partial/doctorForm.jsp"%>
     </form>
   </div>
 </div>

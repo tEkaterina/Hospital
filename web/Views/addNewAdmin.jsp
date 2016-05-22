@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <html ng-app="hospitalApp" ng-controller="pageController">
 <head>
-  <title>Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚</title>
+  <title>Личный кабинет</title>
   <meta http-equiv="content-language" content="ru">
   <meta name="description" content="">
   <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.min.css">
@@ -14,20 +14,20 @@
 </header>
 <nav>
   <ul id="navbar" class="nav nav-pills">
-    <li role="presentation"><a href="/patientsView">CРїРёСЃРѕРє РїР°С†РёРµРЅС‚РѕРІ</a></li>
-    <li role="presentation"><a href="/doctorsView">РЎРїРёСЃРѕРє РІСЂР°С‡РµР№</a></li>
-    <li role="presentation"><a href="/addNewDoctor">Р”РѕР±Р°РІРёС‚СЊ РІСЂР°С‡Р°</a></li>
-    <li role="presentation" class="active"><a href="/addNewAdmin">Р”РѕР±Р°РІРёС‚СЊ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°</a></li>
-    <li role="presentation"><a href="/usersView">РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃРёСЃС‚РµРјС‹</a></li>
+    <li role="presentation"><a href="/patientsView">Cписок пациентов</a></li>
+    <li role="presentation"><a href="/doctorsView">Список врачей</a></li>
+    <li role="presentation"><a href="/addNewDoctor">Добавить врача</a></li>
+    <li role="presentation" class="active"><a href="/addNewAdmin">Добавить администратора</a></li>
+    <li role="presentation"><a href="/usersView">Список пользователей системы</a></li>
   </ul>
 </nav>
 <div class="container-fluid">
   <div class="content col-sm-offset-3 col-sm-6">
     <div style="text-align: center;">
-      <label class="form-title">РќРѕРІС‹Р№ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ</label>
+      <label class="form-title">Новый администратор</label>
     </div>
     <form class="form-horizontal" action="/addNewAdmin" method="post">
-      <%@include  file="Partial/newUserForm.jsp" %>
+      <%@include  file="Partial/userForm.jsp" %>
     </form>
   </div>
 </div>

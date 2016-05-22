@@ -20,6 +20,10 @@ public class Speciality {
     public Speciality(){
         doctors = new HashSet<Doctor>();
     }
+    public Speciality(String name){
+        doctors = new HashSet<Doctor>();
+        this.name = name;
+    }
 
     public int getId(){
         return id;

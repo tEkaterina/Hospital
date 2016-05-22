@@ -5,6 +5,7 @@ import hospital.models.Speciality;
 import hospital.models.User;
 import hospital.repositories.concrete.Repository;
 
+import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -12,9 +13,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.List;
 
-/**
- * Created by Balashechka on 20.05.2016.
- */
 public class UserService {
 
     public static void addAdmin(User admin){
@@ -23,6 +21,16 @@ public class UserService {
         adminRepository.close();
     }
 
+    public static void addDoctor(User user, Doctor doctor){
+        Repository<User> userRepository = new Repository<User>(User.class);
+        user.setDoctor(doctor);
+        doctor.setUser(user);
+
+        userRepository.save(doctor);
+        userRepository.add(user);
+
+        userRepository.close();
+    }
 
     public static String MD5(String st) {
         MessageDigest messageDigest = null;

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <html ng-app="hospitalApp" ng-controller="pageController">
 <head>
   <title></title>

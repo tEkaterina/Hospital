@@ -19,13 +19,11 @@ import java.util.List;
 public class AddNewDoctor extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.setCharacterEncoding("windows-1251");
         if (UserService.isValidDoctor(request)) {
             Doctor doctor = TempAttributesToObj.getDoctors(request);
-            User user = TempAttributesToObj.getAdmin(request);
-            UserService.addAdmin(user);
-            DoctorService.addDoctor(doctor);
+            User user = TempAttributesToObj.getAdmin(request);;
+            UserService.addDoctor(user, doctor);
             response.sendRedirect("/success");
         }
         else {
@@ -35,7 +33,8 @@ public class AddNewDoctor extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      request.setAttribute("specialities", SpecialityService.getAll());
-      request.getRequestDispatcher("/Views/addNewDoctor.jsp").forward(request, response);
+        DoctorService.checkSpecialityList();
+        request.setAttribute("specialities", SpecialityService.getAll());
+        request.getRequestDispatcher("/Views/addNewDoctor.jsp").forward(request, response);
     }
 }

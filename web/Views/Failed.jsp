@@ -5,14 +5,14 @@
   Time: 16:22
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <html>
 <head>
   <title>Success</title>
 </head>
 <body>
 <form action="/failed" method = "post">
-  <b>РџСЂРѕРІРµСЂСЊС‚Рµ РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ</b>
+  <b>Проверьте введенные данные</b>
 </form>
 </body>
 </html>

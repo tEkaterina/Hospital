@@ -1,6 +1,7 @@
 package hospital.services;
 
 import hospital.models.Doctor;
+import hospital.models.Speciality;
 import hospital.models.Visit;
 import hospital.repositories.concrete.Repository;
 
@@ -8,11 +9,6 @@ import java.util.List;
 import java.util.Set;
 
 public class DoctorService {
-
-    /*
-    public static void create(Doctor entity) {
-
-    }*/
 
     public static void update(Doctor entity){
         Repository<Doctor> DoctorRepository = new Repository<Doctor>(Doctor.class);
@@ -54,5 +50,17 @@ public class DoctorService {
         doctorRepository.close();
     }
 
+    public static void checkSpecialityList(){
+        Repository<Speciality> specialityRepository = new Repository<Speciality>(Speciality.class);
+        if (specialityRepository.getAll().isEmpty()){
+            Speciality speciality = new Speciality("Терапевт");
+            specialityRepository.add(speciality);
 
+            speciality = new Speciality("Хирург");
+            specialityRepository.add(speciality);
+
+            speciality = new Speciality("Эндокринолог");
+            specialityRepository.add(speciality);
+        }
+    }
 }

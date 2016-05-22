@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <%@ page import="hospital.models.Patient" %>
 <%@ page import="java.util.ArrayList" %>
 <html>

@@ -98,4 +98,9 @@ public class Repository<T> implements IRepository<T> {
     {
         session.close();
     }
+
+    @Override
+    public void save(Object dependent){
+        session.save(dependent);
+    }
 }
