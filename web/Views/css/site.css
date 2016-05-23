@@ -24,7 +24,8 @@ body{
     font-family: BloggerSans;
 }
 
-nav{
+nav,
+footer{
     background-color: #207178;
 }
 .nav-pills a{

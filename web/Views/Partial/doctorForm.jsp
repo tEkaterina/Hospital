@@ -2,11 +2,11 @@
 <%@ page contentType="text/html;charset=windows-1251" language="java" %>
 <div class="form-group inner-addon left-addon">
   <i class="fa fa-user" aria-hidden="true"></i>
-  <input class="form-control" type="text" name="name" placeholder="Имя">
+  <input class="form-control" type="text" name="name" placeholder="Имя" value="${doctor.getName()}>
 </div>
 <div class="form-group inner-addon left-addon">
   <i class="fa fa-user" aria-hidden="true"></i>
-  <input class="form-control" type="text" name="surname" placeholder="Фамилия">
+  <input class="form-control" type="text" name="surname" placeholder="Фамилия" value="${doctor.getSurname()}>
 </div>
 <div class="form-group">
   <label class="control-label col-sm-3">Категория</label>
@@ -29,7 +29,7 @@
       <i class="fa fa-user-md" aria-hidden="true"></i>
       <select class="form-control" name="specialities">
         <c:forEach items = "${specialities}" var="speciality">
-          <option><c:out value="${speciality.getName()}"/></option>
+          <option <c:out value="${speciality }">><c:out value="${speciality.getName()}"/></option>
         </c:forEach>
       </select>
     </div>
@@ -37,6 +37,6 @@
 </div>
 <div class="form-group inner-addon left-addon">
   <i class="fa fa-phone" aria-hidden="true"></i>
-  <input class="form-control" type="text" name="phone" placeholder="Телефон">
+  <input class="form-control" type="text" name="phone" placeholder="Телефон" value="${doctor.getTelephone()}">
 </div>
 <%@include file="userForm.jsp"%>

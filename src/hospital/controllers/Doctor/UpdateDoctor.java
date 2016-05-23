@@ -2,10 +2,12 @@ package hospital.controllers.Doctor;
 
 import hospital.models.Doctor;
 import hospital.models.Speciality;
+import hospital.models.User;
 import hospital.repositories.concrete.Repository;
 import hospital.services.DoctorService;
 import hospital.services.SpecialityService;
 import hospital.services.TempAttributesToObj;
+import hospital.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +32,9 @@ public class UpdateDoctor extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("doctor", DoctorService.getById(id));
         request.setAttribute("specialities", SpecialityService.getAll());
-        request.getRequestDispatcher("/Views/editDoctorForm.jsp").forward(request, response);
+        request.setAttribute("partialPage", "/Views/editDoctorForm.jsp");
+        request.setAttribute("activeNavPill", "doctor");
+        User user = (User)request.getSession().getAttribute("currentUser");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }
 }

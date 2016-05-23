@@ -51,7 +51,7 @@
     <c:import url="${partialPage}"></c:import>
   </c:if>
 </div>
-<footer></footer>
+<%@include file="../Partial/footer.jsp"%>
 </body>
 <script src="../../libs/bootstrap/js/jquery-2.2.4.min.js"></script>
 <script src="../../libs/bootstrap/js/bootstrap.min.js"></script>
