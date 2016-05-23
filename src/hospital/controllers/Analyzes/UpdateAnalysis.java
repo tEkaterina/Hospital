@@ -11,22 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/createAnalyz")
-public class CreateAnalyz extends HttpServlet {
+@WebServlet("/updateAnalyz")
+public class UpdateAnalysis extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.setCharacterEncoding("windows-1251");
-        Analysis instance = TempAttributesToObj.getAnalysis(request); //TODO replace with JS get object from Form
-        AnalyzService.create(instance);
+        Analysis analysis = TempAttributesToObj.getAnalysis(request); //TODO replace with JS get object from Form
+        AnalyzService.update(analysis);
         response.sendRedirect("/patientsView");
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int visitId = Integer.parseInt(request.getParameter("visitId"));
-        request.setAttribute("visitId", visitId);
-        request.getRequestDispatcher("/Views/createAnalysisForm.jsp").forward(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        request.setAttribute("analyz", AnalyzService.getById(id));
+        request.setAttribute("visitId", Integer.parseInt(request.getParameter("visitId")));
+        request.getRequestDispatcher("/Views/editAnalyzForm.jsp").forward(request, response);
     }
 }

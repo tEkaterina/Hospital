@@ -36,7 +36,7 @@ public class TempAttributesToObj {
     public static Analysis getAnalysis(HttpServletRequest request) {
         Analysis analysis = new Analysis();
         String id = request.getParameter("id");
-        if (id!=null) {
+        if (id != null) {
             analysis.setId(Integer.parseInt(id));
         }
         analysis.setDate(new Date());
