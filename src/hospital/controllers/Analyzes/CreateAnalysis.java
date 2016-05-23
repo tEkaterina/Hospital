@@ -19,7 +19,8 @@ public class CreateAnalysis extends HttpServlet {
         request.setCharacterEncoding("windows-1251");
         Analysis instance = TempAttributesToObj.getAnalysis(request); //TODO replace with JS get object from Form
         AnalyzService.create(instance);
-        response.sendRedirect("/patientsView");
+
+        response.sendRedirect("/analyzes?id="+instance.getVisit().getId());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

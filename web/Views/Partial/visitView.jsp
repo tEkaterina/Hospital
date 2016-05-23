@@ -8,8 +8,12 @@
           <c:if test="${currentUser.isAdmin() ||currentUser.getDoctor().getId()==visit.getDoctor().getId()}">
             <form class="tool-form" action = "/updateVisit" method="get">
               <button type="submit" class="btn btn-default btn-sm tool">
-                <i class="fa fa-pencil tool-icon"></i>Редактировать</button>
+                <i class="fa fa-pencil tool-icon"></i>Редактировать
+              </button>
               <input type="hidden" name="id" value="${visit.getId()}">
+              <c:if test="${patient != null}">
+                <input type="hidden" name="patientId" value="${patient.getId()}">
+              </c:if>
             </form>
 
             <form class="tool-form" action = "/deleteVisit" method="get">
@@ -17,6 +21,9 @@
               <button type="submit" class="btn btn-default btn-sm tool">
                 <i class="fa fa-user-times" aria-hidden="true"></i>Удалить
               </button>
+              <c:if test="${patient != null}">
+                <input type="hidden" name="patientId" value="${patient.getId()}">
+              </c:if>
             </form>
           </c:if>
         </span>

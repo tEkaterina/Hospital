@@ -25,9 +25,6 @@ public class ReadPatientVisits extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String patientIdStr = request.getParameter("patientId");
-        if (patientIdStr == null){
-            patientIdStr = request.getSession().getAttribute("patientId").toString();
-        }
         int patientId = Integer.parseInt(patientIdStr);
         request.setAttribute("visits", PatientService.getVisits(patientId));
         request.setAttribute("patient", PatientService.getById(patientId));

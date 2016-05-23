@@ -1,5 +1,6 @@
 package hospital.controllers.Analyzes;
 
+import hospital.models.Analysis;
 import hospital.services.AnalyzService;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,8 @@ public class DeleteAnalysis extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
+        int visitId = Integer.parseInt(request.getParameter("visitId"));
         AnalyzService.delete(id);
-        response.sendRedirect("/patientsView");
+        response.sendRedirect("/analyzes?id="+visitId);
     }
 }

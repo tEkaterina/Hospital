@@ -64,6 +64,8 @@ public class UserService {
     public static boolean IsAuthorized(String strLog, String strPas){
         Repository<User> usersRepository = new Repository<User>(User.class);
         User currentUser = usersRepository.getByField("email", strLog);
+        if (currentUser == null) return false;
+
         String salt = currentUser.getSalt();
         strPas = strPas + salt;
         return (currentUser.getPassword().equals(UserService.MD5(strPas)) && currentUser.getActivity());

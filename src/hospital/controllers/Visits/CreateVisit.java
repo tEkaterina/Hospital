@@ -18,13 +18,11 @@ import java.io.IOException;
 @WebServlet("/createVisit")
 public class CreateVisit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.setCharacterEncoding("windows-1251");
         Visit instance = TempAttributesToObj.getVisit(request);//TODO replace with JS get object from Form
         VisitService.create(instance);
 
-        request.getSession().setAttribute("patientId", instance.getPatient().getId());
-        response.sendRedirect("/patientVisits");
+        response.sendRedirect("/patientVisits?patientId=" + instance.getPatient().getId());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

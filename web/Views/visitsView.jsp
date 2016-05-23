@@ -13,5 +13,7 @@
       <%@include file="Partial/visitView.jsp"%>
     </c:forEach>
   </div>
-  <%@include file="Partial/visitForm.jsp"%>
+  <c:if test="${patient != null}">
+    <%@include file="createVisitForm.jsp"%>
+  </c:if>
 </div>

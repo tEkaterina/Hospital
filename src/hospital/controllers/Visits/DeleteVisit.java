@@ -2,6 +2,8 @@ package hospital.controllers.Visits;
 
 //import hospital.services.VisitService;
 
+import hospital.models.User;
+import hospital.services.UserService;
 import hospital.services.VisitService;
 
 import javax.servlet.ServletException;
@@ -21,7 +23,15 @@ public class DeleteVisit extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         VisitService.delete(id);
 
-        request.getSession().setAttribute("patientId", id);
-        response.sendRedirect("/patientVisits");
+        User user = (User) request.getSession().getAttribute("currentUser");
+
+        String patientId = request.getParameter("patientId");
+        if (patientId != null) {
+            response.sendRedirect("/patientVisits?patientId" + patientId);
+        }else if(user != null && user.getRoleName().equals(User.RoleName.Doctor)){
+            response.sendRedirect("/doctorVisit");
+        }else{
+            response.sendRedirect(UserService.getTemplatePage(user));
+        }
     }
 }

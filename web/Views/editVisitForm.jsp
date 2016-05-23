@@ -1,22 +1,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=windows-1251" language="java" %>
-<html>
-<head>
-  <title>Редактирование информации о визите</title>
-</head>
-<body>
-<table border ="1">
-  <form action = "/updateVisit" method="POST">
-    <table border ="1">
-      <tr>
-        <th>Комментарий</th>
-        <td><input type="text" name="comment" value="<c:out value="${visit.getComment()}"/>"></td>
-      </tr>
-    </table>
-    <input type="hidden" name="id" value="${visit.getId()}">
-    <input type="submit" value="Сохранить">
-  </form>
-</table>
-</body>
-</html>
-
+<div class="row">
+  <div class="content col-sm-offset-2 col-sm-8">
+    <div class="text-center"><label class="form-title">Комментарий для визита</label></div>
+    <form action = "/updateVisit" method="POST">
+      <%@include file="Partial/visitForm.jsp"%>
+      <input type="hidden" name="id" value="${visit.getId()}">
+      <input type="hidden" name="patientId" value="${visit.getPatient().getId()}">
+      <div class="form-group text-center">
+        <input class="btn btn-success blue" type="submit" value="Сохранить">
+      </div>
+    </form>
+  </div>
+</div>

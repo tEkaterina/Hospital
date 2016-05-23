@@ -1,5 +1,7 @@
 package hospital.controllers.Analyzes;
 
+import hospital.models.User;
+import hospital.services.UserService;
 import hospital.services.VisitService;
 
 import javax.servlet.ServletException;
@@ -17,10 +19,17 @@ public class ReadAnalyzes extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        int visitId = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
+        if (id == null){
+            id = request.getSession().getAttribute("id").toString();
+            request.getSession().removeAttribute("id");
+        }
+        int visitId = Integer.parseInt(id);
         request.setAttribute("analyzes", VisitService.getAnalyzes(visitId));
         request.setAttribute("visit", VisitService.getById(visitId));
-        request.getRequestDispatcher("/Views/analysisView.jsp").forward(request, response);
+        request.setAttribute("partialPage", "/Views/analysisView.jsp");
+
+        User user = (User) request.getSession().getAttribute("currentUser");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }
 }
