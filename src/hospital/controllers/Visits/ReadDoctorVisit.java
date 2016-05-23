@@ -2,6 +2,7 @@ package hospital.controllers.Visits;
 
 import hospital.models.User;
 import hospital.services.DoctorService;
+import hospital.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,8 @@ public class ReadDoctorVisit extends HttpServlet {
 
         User user = (User)request.getSession().getAttribute("currentUser");
         request.setAttribute("visits", DoctorService.getVisits(user.getDoctor().getId()));
-        request.getRequestDispatcher("/Views/doctor'sVisitsView.jsp").forward(request, response);
+        request.setAttribute("partialPage", "/Views/visitsView.jsp");
+        request.setAttribute("activeNavPill", "visit");
+        request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);
     }
 }

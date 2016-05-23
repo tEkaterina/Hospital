@@ -57,7 +57,7 @@
                         margin: 0 !important;
                         display: inline;
                         ">
-              <input type="hidden" name="idPatient" value="${patient.getId()}">
+              <input type="hidden" name="patientId" value="${patient.getId()}">
               <input class="btn btn-success blue" type="submit" value="Открыть список визитов">
             </form>
           </td>

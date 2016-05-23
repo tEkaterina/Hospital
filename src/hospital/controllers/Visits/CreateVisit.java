@@ -1,9 +1,13 @@
 package hospital.controllers.Visits;
 
+import hospital.models.Patient;
 import hospital.models.Visit;
+import hospital.repositories.concrete.Repository;
+import hospital.services.PatientService;
 import hospital.services.TempAttributesToObj;
 import hospital.services.VisitService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,13 +22,12 @@ public class CreateVisit extends HttpServlet {
         request.setCharacterEncoding("windows-1251");
         Visit instance = TempAttributesToObj.getVisit(request);//TODO replace with JS get object from Form
         VisitService.create(instance);
-        response.sendRedirect("/patientsView");
+
+        request.getSession().setAttribute("patientId", instance.getPatient().getId());
+        response.sendRedirect("/patientVisits");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int patientId = Integer.parseInt(request.getParameter("patientId"));
-        request.setAttribute("patientId", patientId);
-        request.getRequestDispatcher("/Views/createVisitForm.jsp").forward(request, response);
     }
 }

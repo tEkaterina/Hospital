@@ -24,10 +24,14 @@ public class ReadPatientVisits extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int patientId = Integer.parseInt(request.getParameter("idPatient"));
+        String patientIdStr = request.getParameter("patientId");
+        if (patientIdStr == null){
+            patientIdStr = request.getSession().getAttribute("patientId").toString();
+        }
+        int patientId = Integer.parseInt(patientIdStr);
         request.setAttribute("visits", PatientService.getVisits(patientId));
         request.setAttribute("patient", PatientService.getById(patientId));
-        request.setAttribute("partialPage", "/Views/patient'sVisitsView.jsp");
+        request.setAttribute("partialPage", "/Views/visitsView.jsp");
         request.setAttribute("activeNavPill", "doctor");
         User user = (User) request.getSession().getAttribute("currentUser");
         request.getRequestDispatcher(UserService.getTemplatePage(user)).forward(request, response);

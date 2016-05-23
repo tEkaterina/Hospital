@@ -3,7 +3,7 @@
   <div class="row">
     <header>
       <div class="col-sm-5" style="text-align: center">
-        <h1 class="header"><i class="fa fa-heartbeat" aria-hidden="true"></i> ћедицинкий центр лечени€ сахарного диабета</h1>
+        <h1 class="header"><i class="fa fa-heartbeat" aria-hidden="true" style="color: crimson"></i> ћедицинкий центр лечени€ сахарного диабета</h1>
       </div>
       <div class="col-sm-offset-2 col-sm-5">
         <form class="tool-form pull-right"

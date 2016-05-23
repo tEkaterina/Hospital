@@ -27,6 +27,6 @@ public class CreateAnalyz extends HttpServlet {
 
         int visitId = Integer.parseInt(request.getParameter("visitId"));
         request.setAttribute("visitId", visitId);
-        request.getRequestDispatcher("/Views/createAnalyzForm.jsp").forward(request, response);
+        request.getRequestDispatcher("/Views/createAnalysisForm.jsp").forward(request, response);
     }
 }

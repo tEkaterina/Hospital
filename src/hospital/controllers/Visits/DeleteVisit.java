@@ -20,6 +20,8 @@ public class DeleteVisit extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         VisitService.delete(id);
-        response.sendRedirect("/patientsView");
+
+        request.getSession().setAttribute("patientId", id);
+        response.sendRedirect("/patientVisits");
     }
 }
